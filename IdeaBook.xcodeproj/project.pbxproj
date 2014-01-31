@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8855286A189B7A6A00A6DE78 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88552869189B7A6A00A6DE78 /* Storyboard.storyboard */; };
+		884B3A2D189B86B000CB00A6 /* PopModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A2A189B86B000CB00A6 /* PopModalSegue.m */; };
+		884B3A2E189B86B000CB00A6 /* ResizeModelViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A2C189B86B000CB00A6 /* ResizeModelViewSegue.m */; };
 		887C9AD9189B598A008910C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887C9AD8189B598A008910C8 /* Foundation.framework */; };
 		887C9ADB189B598A008910C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887C9ADA189B598A008910C8 /* CoreGraphics.framework */; };
 		887C9ADD189B598A008910C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887C9ADC189B598A008910C8 /* UIKit.framework */; };
@@ -42,7 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		88552869189B7A6A00A6DE78 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		884B3A29189B86B000CB00A6 /* PopModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopModalSegue.h; path = Segues/PopModalSegue.h; sourceTree = "<group>"; };
+		884B3A2A189B86B000CB00A6 /* PopModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopModalSegue.m; path = Segues/PopModalSegue.m; sourceTree = "<group>"; };
+		884B3A2B189B86B000CB00A6 /* ResizeModelViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResizeModelViewSegue.h; path = Segues/ResizeModelViewSegue.h; sourceTree = "<group>"; };
+		884B3A2C189B86B000CB00A6 /* ResizeModelViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResizeModelViewSegue.m; path = Segues/ResizeModelViewSegue.m; sourceTree = "<group>"; };
 		887C9AD5189B5989008910C8 /* IdeaBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887C9AD8189B598A008910C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		887C9ADA189B598A008910C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -99,6 +103,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		884B3A28189B869300CB00A6 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				884B3A29189B86B000CB00A6 /* PopModalSegue.h */,
+				884B3A2A189B86B000CB00A6 /* PopModalSegue.m */,
+				884B3A2B189B86B000CB00A6 /* ResizeModelViewSegue.h */,
+				884B3A2C189B86B000CB00A6 /* ResizeModelViewSegue.m */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
 		887C9ACC189B5989008910C8 = {
 			isa = PBXGroup;
 			children = (
@@ -131,23 +146,23 @@
 		887C9ADE189B598A008910C8 /* IdeaBook */ = {
 			isa = PBXGroup;
 			children = (
+				884B3A28189B869300CB00A6 /* Segues */,
 				887C9B19189B5EDE008910C8 /* SWRevealViewController */,
 				887C9AE7189B598A008910C8 /* AppDelegate.h */,
 				887C9AE8189B598A008910C8 /* AppDelegate.m */,
 				887C9AEA189B598A008910C8 /* Main.storyboard */,
-				88552869189B7A6A00A6DE78 /* Storyboard.storyboard */,
 				887C9AF0189B598A008910C8 /* IdeaViewController.h */,
 				887C9AF1189B598A008910C8 /* IdeaViewController.m */,
 				887C9AF3189B598A008910C8 /* IdeaNearbyViewController.h */,
 				887C9AF4189B598A008910C8 /* IdeaNearbyViewController.m */,
 				887C9B13189B5AFA008910C8 /* UsersNearbyViewController.h */,
 				887C9B14189B5AFA008910C8 /* UsersNearbyViewController.m */,
-				887C9AF6189B598A008910C8 /* Images.xcassets */,
-				887C9ADF189B598A008910C8 /* Supporting Files */,
 				887C9B16189B5D51008910C8 /* SettingsViewController.h */,
 				887C9B17189B5D51008910C8 /* SettingsViewController.m */,
 				887C9B2A189B667A008910C8 /* SidebarViewController.h */,
 				887C9B2B189B667A008910C8 /* SidebarViewController.m */,
+				887C9AF6189B598A008910C8 /* Images.xcassets */,
+				887C9ADF189B598A008910C8 /* Supporting Files */,
 			);
 			path = IdeaBook;
 			sourceTree = "<group>";
@@ -265,7 +280,6 @@
 				887C9B27189B652E008910C8 /* comments.png in Resources */,
 				887C9B28189B652E008910C8 /* menu.png in Resources */,
 				887C9B29189B652E008910C8 /* menu@2x.png in Resources */,
-				8855286A189B7A6A00A6DE78 /* Storyboard.storyboard in Resources */,
 				887C9AEC189B598A008910C8 /* Main.storyboard in Resources */,
 				887C9AE3189B598A008910C8 /* InfoPlist.strings in Resources */,
 			);
@@ -293,6 +307,8 @@
 				887C9B18189B5D51008910C8 /* SettingsViewController.m in Sources */,
 				887C9AF2189B598A008910C8 /* IdeaViewController.m in Sources */,
 				887C9AE5189B598A008910C8 /* main.m in Sources */,
+				884B3A2E189B86B000CB00A6 /* ResizeModelViewSegue.m in Sources */,
+				884B3A2D189B86B000CB00A6 /* PopModalSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

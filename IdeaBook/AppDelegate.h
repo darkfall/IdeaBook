@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Utils/GeoLocationManager.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, GeoLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

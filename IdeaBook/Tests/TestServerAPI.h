@@ -10,6 +10,8 @@
 
 @interface TestServerAPI : NSObject
 
+// Run some simple ServerAPI tests...
+
 + (void)run;
 
 @end

@@ -18,29 +18,60 @@
 
 @interface ServerAPI : NSObject
 
-+ (void)registerNewUser:(const IdeaUser*)user success:(void (^)(void))success fail:(void (^)(void))fail;
++ (void)registerNewUser:(const IdeaUser*)user
+                success:(void (^)(void))success
+                   fail:(void (^)(void))fail;
 
-+ (void)getIdeasNearby:(double)latitude longitude:(double)longitude success:(void (^)(NSArray*))success fail:(void (^)(void))fail;
++ (void)getIdeasNearby:(double)latitude
+             longitude:(double)longitude
+               success:(void (^)(NSArray*))success
+                  fail:(void (^)(void))fail;
 
-+ (void)getSharedIdeas:(const IdeaUser*)user success:(void (^)(NSArray*))success fail:(void (^)(void))fail;
++ (void)getSharedIdeas:(const IdeaUser*)user
+               success:(void (^)(NSArray*))success
+                  fail:(void (^)(void))fail;
 
-+ (void)shareIdea:(const Idea*)idea user:(const IdeaUser*)user success:(void (^)(NSString*))success fail:(void (^)(void))fail;
++ (void)removeIdea:(const NSString*)uuid
+           success:(void (^)(void))success
+              fail:(void (^)(void))fail;
 
-+ (void)removeIdea:(const NSString*)uuid success:(void (^)(void))success fail:(void (^)(void))fail;
++ (void)modifyIdea:(const Idea*)idea
+           success:(void (^)(void))success
+              fail:(void (^)(void))fail;
 
-+ (void)modifyIdea:(const Idea*)idea success:(void (^)(void))success fail:(void (^)(void))fail;
 
-+ (void)getIdea:(const NSString*)uuid success:(void (^)(Idea*))success fail:(void (^)(void))fail;;
++ (void)getIdea:(const NSString*)uuid
+        success:(void (^)(Idea*))success
+           fail:(void (^)(void))fail;
 
-+ (void)getComments:(const Idea*)idea success:(void (^)(NSArray*))success fail:(void (^)(void))fail;
++ (void)shareIdea:(Idea*)idea
+             user:(const IdeaUser*)user
+          success:(void (^)(NSString*))success
+             fail:(void (^)(void))fail;
 
-+ (void)likeIdea:(const Idea*)idea success:(void (^)(int))success fail:(void (^)(void))fail;
++ (void)likeIdea:(Idea*)idea
+         success:(void (^)(int))success
+            fail:(void (^)(void))fail;
 
-+ (void)dislikeIdea:(const Idea*)idea success:(void (^)(int))success fail:(void (^)(void))fail;
++ (void)dislikeIdea:(Idea*)idea
+            success:(void (^)(int))success
+               fail:(void (^)(void))fail;
 
-+ (void)addComment:(const Idea*)idea fromUser:(IdeaUser*)fromUser comment:(const IdeaComment*)comment success:(void (^)(NSString*))success fail:(void (^)(void))fail;
 
-+ (void)removeComment:(const IdeaComment*)comment success:(void (^)(void))success fail:(void (^)(void))fail;
++ (void)getComments:(const Idea*)idea
+            success:(void (^)(NSArray*))success
+               fail:(void (^)(void))fail;
+
+
++ (void)addComment:(const Idea*)idea
+          fromUser:(const IdeaUser*)fromUser
+           comment:(IdeaComment*)comment
+           success:(void (^)(NSString*))success
+              fail:(void (^)(void))fail;
+
++ (void)removeComment:(const IdeaComment*)comment
+              success:(void (^)(void))success
+                 fail:(void (^)(void))fail;
 
 
 @end

@@ -38,7 +38,9 @@
     respObj[@"status"] == nil || ![respObj[@"status"] isEqual: @"failed"]
 
 
-+ (void)registerNewUser:(const IdeaUser*)user success:(void (^)(void))success fail:(void (^)(void))fail {
++ (void)registerNewUser:(const IdeaUser*)user
+                success:(void (^)(void))success
+                   fail:(void (^)(void))fail {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"uuid": user.uuid,
@@ -52,6 +54,7 @@
               if(API_SUCCEED(responseObject)) {
                   success();
               } else {
+                  NSLog(@"[ServerAPI] registerNewUser error: %@", responseObject[@"error"]);
                   fail();
               }
           }
@@ -62,7 +65,10 @@
      ];
 }
 
-+ (void)getIdeasNearby:(double)latitude longitude:(double)longitude success:(void (^)(NSArray*))success fail:(void (^)(void))fail {
++ (void)getIdeasNearby:(double)latitude
+             longitude:(double)longitude
+               success:(void (^)(NSArray*))success
+                  fail:(void (^)(void))fail {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"latitude": [NSNumber numberWithDouble:latitude],
@@ -92,7 +98,9 @@
      ];
 }
 
-+ (void)getSharedIdeas:(const IdeaUser*)user success:(void (^)(NSArray*))success fail:(void (^)(void))fail {
++ (void)getSharedIdeas:(const IdeaUser*)user
+               success:(void (^)(NSArray*))success
+                  fail:(void (^)(void))fail {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"uuid": user.uuid};
@@ -108,7 +116,7 @@
                      if(idea != nil && idea.uuid.length > 0) {
                          [ideas addObject:idea];
                      } else {
-                         NSLog(@"getIdeasNearby: Got invalid idea: %@", idea);
+                         NSLog(@"[ServerAPI] getIdeasNearby: Got invalid idea: %@", idea);
                      }
                  }
                  success(ideas);
@@ -121,7 +129,9 @@
      ];
 }
 
-+ (void)shareIdea:(const Idea*)idea user:(const IdeaUser*)user success:(void (^)(NSString*))success fail:(void (^)(void))fail {
++ (void)shareIdea:(Idea*)idea
+             user:(const IdeaUser*)user
+          success:(void (^)(NSString*))success fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -136,8 +146,10 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success(responseObject[@"data"]);
+                  idea.uuid = responseObject[@"data"];
+                  success(idea.uuid);
               } else {
+                  NSLog(@"[ServerAPI] shareIdea error: %@", responseObject[@"error"]);
                   fail();
               }
           }
@@ -149,7 +161,9 @@
     
 }
 
-+ (void)removeIdea:(const NSString*)uuid success:(void (^)(void))success fail:(void (^)(void))fail {
++ (void)removeIdea:(const NSString*)uuid
+           success:(void (^)(void))success
+              fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -161,6 +175,7 @@
               if(API_SUCCEED(responseObject)) {
                   success();
               } else {
+                  NSLog(@"[ServerAPI] removeIdea error: %@", responseObject[@"error"]);
                   fail();
               }
           }
@@ -172,7 +187,9 @@
     
 }
 
-+ (void)modifyIdea:(const Idea*)idea success:(void (^)(void))success fail:(void (^)(void))fail {
++ (void)modifyIdea:(const Idea*)idea
+           success:(void (^)(void))success
+              fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -186,6 +203,7 @@
               if(API_SUCCEED(responseObject)) {
                   success();
               } else {
+                  NSLog(@"[ServerAPI] modifyIdea error: %@", responseObject[@"error"]);
                   fail();
               }
           }
@@ -197,7 +215,9 @@
 
 }
 
-+ (void)getIdea:(const NSString*)uuid success:(void (^)(Idea*))success fail:(void (^)(void))fail {
++ (void)getIdea:(const NSString*)uuid
+        success:(void (^)(Idea*))success
+           fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -211,8 +231,10 @@
                  
                  if(idea != nil && idea.uuid.length > 0)
                      success(idea);
-                 else
+                 else {
+                     NSLog(@"[ServerAPI] getIdea error: %@", responseObject[@"error"]);
                      fail();
+                 }
              }
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -223,7 +245,9 @@
     
 }
 
-+ (void)getComments:(const Idea*)idea success:(void (^)(NSArray*))success fail:(void (^)(void))fail {
++ (void)getComments:(const Idea*)idea
+            success:(void (^)(NSArray*))success
+               fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -240,7 +264,7 @@
                      if(idea != nil) {
                          [comments addObject:comment];
                      } else {
-                         NSLog(@"getIdeasNearby: Got invalid idea: %@", idea);
+                         NSLog(@"[ServerAPI] getComments: Got invalid idea: %@", idea);
                      }
                  }
                  success(comments);
@@ -254,7 +278,9 @@
     
 }
 
-+ (void)likeIdea:(const Idea*)idea success:(void (^)(int))success fail:(void (^)(void))fail {
++ (void)likeIdea:(Idea*)idea
+         success:(void (^)(int))success
+            fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -264,8 +290,10 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success([responseObject[@"data"] intValue]);
+                  idea.likes = [NSNumber numberWithInt:[responseObject[@"data"] intValue]];
+                  success([idea.likes intValue]);
               } else {
+                  NSLog(@"[ServerAPI] likeIdea error: %@", responseObject[@"error"]);
                   fail();
               }
           }
@@ -276,7 +304,9 @@
      ];
 }
 
-+ (void)dislikeIdea:(const Idea*)idea success:(void (^)(int))success fail:(void (^)(void))fail {
++ (void)dislikeIdea:(const Idea*)idea
+            success:(void (^)(int))success
+               fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -286,8 +316,10 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success([responseObject[@"data"] intValue]);
+                  idea.dislikes = [NSNumber numberWithInt:[responseObject[@"data"] intValue]];
+                  success([idea.dislikes intValue]);
               } else {
+                  NSLog(@"[ServerAPI] dislikeIdea error: %@", responseObject[@"error"]);
                   fail();
               }
           }
@@ -298,7 +330,11 @@
      ];
 }
 
-+ (void)addComment:(const Idea*)idea fromUser:(IdeaUser*)fromUser comment:(const IdeaComment*)comment success:(void (^)(NSString*))success fail:(void (^)(void))fail {
++ (void)addComment:(const Idea*)idea
+          fromUser:(const IdeaUser*)fromUser
+           comment:(IdeaComment*)comment
+           success:(void (^)(NSString*))success
+              fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -310,8 +346,10 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success(responseObject[@"uuid"]);
+                  comment.uuid = responseObject[@"data"];
+                  success(comment.uuid);
               } else {
+                  NSLog(@"[ServerAPI] addComment error: %@", responseObject[@"error"]);
                   fail();
               }
           }
@@ -322,18 +360,21 @@
      ];
 }
 
-+ (void)removeComment:(const IdeaComment*)comment success:(void (^)(void))success fail:(void (^)(void))fail {
++ (void)removeComment:(const IdeaComment*)comment
+              success:(void (^)(void))success
+                 fail:(void (^)(void))fail {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"uuid": comment.uuid};
     
-    [manager POST:kRemoveIdeaUrl
+    [manager POST:kRemoveCommentUrl
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
                   success();
               } else {
+                  NSLog(@"[ServerAPI] removeComment error: %@", responseObject[@"error"]);
                   fail();
               }
           }

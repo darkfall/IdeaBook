@@ -8,11 +8,14 @@
 
 #import "AppDelegate.h"
 
+#import "Tests/TestServerAPI.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+    [TestServerAPI run];
     return YES;
 }
 

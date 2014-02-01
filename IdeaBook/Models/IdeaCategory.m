@@ -10,5 +10,13 @@
 
 @implementation IdeaCategory
 
+- (id)init {
+    if(self = [super init]) {
+        _name = _uuid = nil;
+        _ideas = nil;
+    }
+    return self;
+}
+
 
 @end

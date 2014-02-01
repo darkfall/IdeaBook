@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IdeaViewController : UITableViewController
+#import "Utils/IdeaManager.h"
+
+@interface IdeaViewController : UITableViewController <IdeaManagerDelegate>
 
 @end

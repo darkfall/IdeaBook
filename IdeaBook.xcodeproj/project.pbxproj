@@ -33,6 +33,7 @@
 		884B3A72189C9A9700CB00A6 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A71189C9A9700CB00A6 /* UserManager.m */; };
 		884B3A75189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A74189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m */; };
 		884B3A79189CA93700CB00A6 /* TestServerAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A78189CA93700CB00A6 /* TestServerAPI.m */; };
+		884B3A80189CCB6900CB00A6 /* IdeaFountainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A7F189CCB6900CB00A6 /* IdeaFountainViewController.m */; };
 		887C9AD9189B598A008910C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887C9AD8189B598A008910C8 /* Foundation.framework */; };
 		887C9ADB189B598A008910C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887C9ADA189B598A008910C8 /* CoreGraphics.framework */; };
 		887C9ADD189B598A008910C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887C9ADC189B598A008910C8 /* UIKit.framework */; };
@@ -54,6 +55,16 @@
 		887C9B28189B652E008910C8 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 887C9B24189B652E008910C8 /* menu.png */; };
 		887C9B29189B652E008910C8 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887C9B25189B652E008910C8 /* menu@2x.png */; };
 		887C9B2C189B667A008910C8 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9B2B189B667A008910C8 /* SidebarViewController.m */; };
+		88FF784B189CCD6D004366FA /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7843189CCD6D004366FA /* pencil.png */; };
+		88FF784C189CCD6D004366FA /* pencil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7844189CCD6D004366FA /* pencil@2x.png */; };
+		88FF784D189CCD6D004366FA /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7845189CCD6D004366FA /* plus.png */; };
+		88FF784E189CCD6D004366FA /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7846189CCD6D004366FA /* plus@2x.png */; };
+		88FF784F189CCD6D004366FA /* smile_sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7847189CCD6D004366FA /* smile_sad.png */; };
+		88FF7850189CCD6D004366FA /* smile_sad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7848189CCD6D004366FA /* smile_sad@2x.png */; };
+		88FF7851189CCD6D004366FA /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF7849189CCD6D004366FA /* smile.png */; };
+		88FF7852189CCD6D004366FA /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF784A189CCD6D004366FA /* smile@2x.png */; };
+		88FF7855189CCE1F004366FA /* NewIdeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7854189CCE1F004366FA /* NewIdeaViewController.m */; };
+		88FF785A189CDD4D004366FA /* IdeaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7859189CDD4D004366FA /* IdeaManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +126,8 @@
 		884B3A74189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DefaultValue.m"; sourceTree = "<group>"; };
 		884B3A77189CA93700CB00A6 /* TestServerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServerAPI.h; sourceTree = "<group>"; };
 		884B3A78189CA93700CB00A6 /* TestServerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServerAPI.m; sourceTree = "<group>"; };
+		884B3A7E189CCB6900CB00A6 /* IdeaFountainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaFountainViewController.h; sourceTree = "<group>"; };
+		884B3A7F189CCB6900CB00A6 /* IdeaFountainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaFountainViewController.m; sourceTree = "<group>"; };
 		887C9AD5189B5989008910C8 /* IdeaBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887C9AD8189B598A008910C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		887C9ADA189B598A008910C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +158,18 @@
 		887C9B25189B652E008910C8 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		887C9B2A189B667A008910C8 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		887C9B2B189B667A008910C8 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		88FF7843189CCD6D004366FA /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
+		88FF7844189CCD6D004366FA /* pencil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencil@2x.png"; sourceTree = "<group>"; };
+		88FF7845189CCD6D004366FA /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		88FF7846189CCD6D004366FA /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
+		88FF7847189CCD6D004366FA /* smile_sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile_sad.png; sourceTree = "<group>"; };
+		88FF7848189CCD6D004366FA /* smile_sad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile_sad@2x.png"; sourceTree = "<group>"; };
+		88FF7849189CCD6D004366FA /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
+		88FF784A189CCD6D004366FA /* smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile@2x.png"; sourceTree = "<group>"; };
+		88FF7853189CCE1F004366FA /* NewIdeaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewIdeaViewController.h; sourceTree = "<group>"; };
+		88FF7854189CCE1F004366FA /* NewIdeaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewIdeaViewController.m; sourceTree = "<group>"; };
+		88FF7858189CDD4D004366FA /* IdeaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaManager.h; sourceTree = "<group>"; };
+		88FF7859189CDD4D004366FA /* IdeaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +238,8 @@
 				884B3A71189C9A9700CB00A6 /* UserManager.m */,
 				884B3A73189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.h */,
 				884B3A74189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m */,
+				88FF7858189CDD4D004366FA /* IdeaManager.h */,
+				88FF7859189CDD4D004366FA /* IdeaManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -297,7 +324,6 @@
 				884B3A76189CA91E00CB00A6 /* Tests */,
 				887C9AE7189B598A008910C8 /* AppDelegate.h */,
 				887C9AE8189B598A008910C8 /* AppDelegate.m */,
-				887C9AEA189B598A008910C8 /* Main.storyboard */,
 				887C9AF0189B598A008910C8 /* IdeaViewController.h */,
 				887C9AF1189B598A008910C8 /* IdeaViewController.m */,
 				887C9AF3189B598A008910C8 /* IdeaNearbyViewController.h */,
@@ -308,6 +334,11 @@
 				887C9B17189B5D51008910C8 /* SettingsViewController.m */,
 				887C9B2A189B667A008910C8 /* SidebarViewController.h */,
 				887C9B2B189B667A008910C8 /* SidebarViewController.m */,
+				884B3A7E189CCB6900CB00A6 /* IdeaFountainViewController.h */,
+				884B3A7F189CCB6900CB00A6 /* IdeaFountainViewController.m */,
+				88FF7853189CCE1F004366FA /* NewIdeaViewController.h */,
+				88FF7854189CCE1F004366FA /* NewIdeaViewController.m */,
+				887C9AEA189B598A008910C8 /* Main.storyboard */,
 				887C9AF6189B598A008910C8 /* Images.xcassets */,
 				887C9ADF189B598A008910C8 /* Supporting Files */,
 			);
@@ -338,6 +369,14 @@
 		887C9B21189B652E008910C8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				88FF7843189CCD6D004366FA /* pencil.png */,
+				88FF7844189CCD6D004366FA /* pencil@2x.png */,
+				88FF7845189CCD6D004366FA /* plus.png */,
+				88FF7846189CCD6D004366FA /* plus@2x.png */,
+				88FF7847189CCD6D004366FA /* smile_sad.png */,
+				88FF7848189CCD6D004366FA /* smile_sad@2x.png */,
+				88FF7849189CCD6D004366FA /* smile.png */,
+				88FF784A189CCD6D004366FA /* smile@2x.png */,
 				887C9B22189B652E008910C8 /* bookmark.png */,
 				887C9B23189B652E008910C8 /* comments.png */,
 				887C9B24189B652E008910C8 /* menu.png */,
@@ -422,15 +461,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88FF784B189CCD6D004366FA /* pencil.png in Resources */,
 				887C9AF7189B598A008910C8 /* Images.xcassets in Resources */,
 				887C9B26189B652E008910C8 /* bookmark.png in Resources */,
+				88FF7852189CCD6D004366FA /* smile@2x.png in Resources */,
 				884B3A6B189C8DE700CB00A6 /* LICENSE in Resources */,
 				887C9B27189B652E008910C8 /* comments.png in Resources */,
 				887C9B28189B652E008910C8 /* menu.png in Resources */,
+				88FF7851189CCD6D004366FA /* smile.png in Resources */,
 				887C9B29189B652E008910C8 /* menu@2x.png in Resources */,
+				88FF7850189CCD6D004366FA /* smile_sad@2x.png in Resources */,
+				88FF784F189CCD6D004366FA /* smile_sad.png in Resources */,
+				88FF784E189CCD6D004366FA /* plus@2x.png in Resources */,
+				88FF784C189CCD6D004366FA /* pencil@2x.png in Resources */,
 				884B3A6C189C8DE700CB00A6 /* README.md in Resources */,
 				887C9AEC189B598A008910C8 /* Main.storyboard in Resources */,
 				887C9AE3189B598A008910C8 /* InfoPlist.strings in Resources */,
+				88FF784D189CCD6D004366FA /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,9 +500,11 @@
 				884B3A67189C8DE700CB00A6 /* AFURLConnectionOperation.m in Sources */,
 				887C9B1C189B5EDE008910C8 /* SWRevealViewController.m in Sources */,
 				884B3A64189C8DE700CB00A6 /* AFHTTPSessionManager.m in Sources */,
+				884B3A80189CCB6900CB00A6 /* IdeaFountainViewController.m in Sources */,
 				884B3A65189C8DE700CB00A6 /* AFNetworkReachabilityManager.m in Sources */,
 				887C9AF5189B598A008910C8 /* IdeaNearbyViewController.m in Sources */,
 				887C9AE9189B598A008910C8 /* AppDelegate.m in Sources */,
+				88FF7855189CCE1F004366FA /* NewIdeaViewController.m in Sources */,
 				884B3A38189C840100CB00A6 /* IdeaCategory.m in Sources */,
 				887C9B2C189B667A008910C8 /* SidebarViewController.m in Sources */,
 				884B3A66189C8DE700CB00A6 /* AFSecurityPolicy.m in Sources */,
@@ -468,6 +517,7 @@
 				887C9AF2189B598A008910C8 /* IdeaViewController.m in Sources */,
 				884B3A3B189C841000CB00A6 /* IdeaUser.m in Sources */,
 				887C9AE5189B598A008910C8 /* main.m in Sources */,
+				88FF785A189CDD4D004366FA /* IdeaManager.m in Sources */,
 				884B3A2E189B86B000CB00A6 /* ResizeModelViewSegue.m in Sources */,
 				884B3A35189C83F700CB00A6 /* IdeaComment.m in Sources */,
 				884B3A4B189C8C6000CB00A6 /* ServerAPI.m in Sources */,

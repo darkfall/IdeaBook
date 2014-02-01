@@ -9,38 +9,47 @@
 #import "IdeaViewController.h"
 #import "SWRevealViewController/SWRevealViewController.h"
 
+#import "NewIdeaViewController.h"
+
+#import "Models/Idea.h"
+
 @interface IdeaViewController ()
 
-@property (nonatomic, strong) NSArray* tableItems;
+@property (strong, nonatomic) IBOutlet UITableView *ideaTableView;
 
 @end
 
 @implementation IdeaViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
-    _tableItems = @[@"test1", @"test2"];
+    [IdeaManager sharedInstance].delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableItems count];
+    return [[[IdeaManager sharedInstance] ideas] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ideaCell" forIndexPath:indexPath];
-    cell.textLabel.text = [_tableItems objectAtIndex:indexPath.row];
+    NSMutableArray* ideas = [[IdeaManager sharedInstance] ideas];
+    cell.textLabel.text = [(Idea*)[ideas objectAtIndex:indexPath.row] content];
     return cell;
+}
+
+- (void)ideaRemoved:(Idea *)idea {
+    [_ideaTableView reloadData];
+}
+
+- (void)ideaAdded:(Idea *)idea {
+    [_ideaTableView reloadData];
 }
 
 - (IBAction)showSidebar:(id)sender {

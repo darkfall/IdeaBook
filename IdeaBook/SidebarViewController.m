@@ -14,11 +14,16 @@
 #import "SettingsViewController.h"
 #import "IdeaViewController.h"
 
+#define kCellHighlightColor [UIColor colorWithRed:(226/255.0) green:(148/255.0) blue:(59/255.0) alpha:1]
+#define kCellBackgroundColor [UIColor colorWithWhite:0.1f alpha:1.0f]
+
 @interface SidebarViewController ()
 
 
 @property (nonatomic, strong) NSArray* menuItems;
 
+@property (nonatomic, strong) NSMutableDictionary* cellDict;
+@property (weak, nonatomic) UITableViewCell* prevSelectedCell;
 
 @end
 
@@ -28,10 +33,12 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = 
-    self.tableView.backgroundColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
+    self.tableView.backgroundColor = kCellBackgroundColor;
     self.tableView.separatorColor = [UIColor colorWithWhite:0.5f alpha:0.2f];
     
-    _menuItems = @[@"title", @"ideas", @"nearby_ideas", @"nearby_users", @"settings"];
+    _prevSelectedCell = nil;
+    _menuItems = @[@"title", @"ideas", @"nearby_ideas", @"idea_fountain", @"settings"];
+    _cellDict = [[NSMutableDictionary alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,15 +50,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSString *cellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    [_cellDict setObject:cell forKey:cellIdentifier];
     
-    cell.backgroundColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
+    cell.backgroundColor = kCellBackgroundColor;
     
     // adjusting selection color
-    UIView *selectionColor = [[UIView alloc] init];
-    selectionColor.backgroundColor = [UIColor colorWithRed:(226/255.0) green:(148/255.0) blue:(59/255.0) alpha:1];
+    UIView* selectionColor = [[UIView alloc] init];
+    selectionColor.backgroundColor = kCellHighlightColor;
     cell.selectedBackgroundView = selectionColor;
+    if([cellIdentifier isEqual:@"ideas"]) {
+        selectionColor = [[UIView alloc] init];
+        selectionColor.backgroundColor = kCellHighlightColor;
+        cell.backgroundView = selectionColor;
+        
+        _prevSelectedCell = cell;
+    }
     
     return cell;
 }
@@ -60,17 +75,33 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
     
-    
+    UITableViewCell* currentCell = nil;
     // Set the photo if it navigates to the PhotoView
-    if ([segue.identifier isEqualToString:@"showIdeasNearby"]) {
-        IdeaNearbyViewController* controller = (IdeaNearbyViewController*)segue.destinationViewController;
-    } else if([segue.identifier isEqualToString:@"showUsersNearby"]) {
-        UsersNearbyViewController* controller = (UsersNearbyViewController*)segue.destinationViewController;
-    } else if([segue.identifier isEqualToString:@"showSettings"]) {
-        SettingsViewController* controller = (SettingsViewController*)segue.destinationViewController;
-    } else if([segue.identifier isEqualToString:@"showMyIdeas"]) {
-        IdeaViewController* controller = (IdeaViewController*)segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"nearby_ideas"]) {
+    
+        
+    } else if([segue.identifier isEqualToString:@"idea_fountain"]) {
+    
+        
+    } else if([segue.identifier isEqualToString:@"settings"]) {
+        
+               
+    } else if([segue.identifier isEqualToString:@"ideas"]) {
+        
     }
+    
+    currentCell = [_cellDict valueForKey:segue.identifier];
+    if(currentCell != nil) {
+        UIView *selectionColor = [[UIView alloc] init];
+        selectionColor.backgroundColor = kCellHighlightColor;
+        currentCell.backgroundView = selectionColor;
+    }
+    if(_prevSelectedCell != nil) {
+        UIView *selectionColor = [[UIView alloc] init];
+        selectionColor.backgroundColor = kCellBackgroundColor;
+        _prevSelectedCell.backgroundView = selectionColor;
+    }
+    _prevSelectedCell = currentCell;
     
     if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;

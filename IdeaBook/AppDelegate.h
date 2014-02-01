@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Utils/GeoLocationManager.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, GeoLocationManagerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Idea : NSObject
+@interface Idea : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString* uuid;
 @property (strong, nonatomic) NSString* title;

@@ -49,29 +49,59 @@
     }
 }
 
-- (void)addIdea:(NSString*)content title:(NSString*)title {
+- (void)ideaChanged:(Idea*)idea withNotification:(BOOL)withNotification; {
+    [self saveDataToDisk];
+    
+    if(withNotification) {
+        if(_delegate)
+            [_delegate ideaRemoved:idea];
+    }
+}
+
+- (void)addIdea:(NSString*)content title:(NSString*)title withNotification:(BOOL)withNotification; {
     Idea* idea = [[Idea alloc] init];
     idea.content = content;
     idea.title = title;
     
     NSDateFormatter *formatter;
     formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-mm-dd hh:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     idea.time = [formatter stringFromDate:[NSDate date]];
     
     [_ideas addObject:idea];
-    if(_delegate)
-        [_delegate ideaAdded:idea];
+    if(withNotification) {
+        if(_delegate)
+            [_delegate ideaAdded:idea];
+    }
     
     [self saveDataToDisk];
 }
 
-- (void)removeIdea:(Idea*)idea {
-    if([_ideas containsObject:idea])
+- (void)removeIdea:(Idea*)idea withNotification:(BOOL)withNotification {
+    if([_ideas containsObject:idea]) {
         [_ideas removeObject:idea];
-    
-    if(_delegate)
-        [_delegate ideaRemoved:idea];
+        
+        [self saveDataToDisk];
+        
+        if(withNotification) {
+            if(_delegate)
+                [_delegate ideaRemoved:idea];
+        }
+    }
+}
+
+- (void)removeAtIndex:(NSUInteger)index withNotification:(BOOL)withNotification {
+    if(_ideas.count > index) {
+        Idea* idea = [_ideas objectAtIndex:index];
+        [_ideas removeObjectAtIndex:index];
+        
+        [self saveDataToDisk];
+        
+        if(withNotification) {
+            if(_delegate)
+                [_delegate ideaRemoved:idea];
+        }
+    }
 }
 
 @end

@@ -26,8 +26,10 @@
 
 + (IdeaManager*)sharedInstance;
 
-- (void)addIdea:(NSString*)content title:(NSString*)title;
-- (void)removeIdea:(Idea*)idea;
+- (void)addIdea:(NSString*)content title:(NSString*)title withNotification:(BOOL)withNotification;;
+- (void)removeIdea:(Idea*)idea withNotification:(BOOL)withNotification;
+- (void)removeAtIndex:(NSUInteger)index withNotification:(BOOL)withNotification;
+- (void)ideaChanged:(Idea*)idea withNotification:(BOOL)withNotification;;
 
 - (void)saveDataToDisk;
 

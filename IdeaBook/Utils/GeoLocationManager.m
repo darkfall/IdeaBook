@@ -33,8 +33,8 @@
         self->_locationManager.delegate = self;
         // 100m
         self->_locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-        // 10m
-        self->_locationManager.distanceFilter = 10;
+        // 100m
+        self->_locationManager.distanceFilter = 100;
     }
     
     [self->_locationManager startUpdatingLocation];
@@ -63,6 +63,7 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {
     self.lastLocation = [locations lastObject];
+    NSLog(@"[GeoLoc] Got last location: %@", self.lastLocation);
     
     if(self.delegate != nil) {
         [self.delegate receivedGeoLocation:self.lastLocation];

@@ -147,6 +147,7 @@
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
                   idea.uuid = responseObject[@"data"];
+                  idea.shared = [NSNumber numberWithBool:YES];
                   success(idea.uuid);
               } else {
                   NSLog(@"[ServerAPI] shareIdea error: %@", responseObject[@"error"]);

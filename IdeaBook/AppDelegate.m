@@ -15,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    [[GeoLocationManager sharedInstance] startUpdate];
    // [TestServerAPI run];
     return YES;
 }

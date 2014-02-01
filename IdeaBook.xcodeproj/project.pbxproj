@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84385F43189D910400C21742 /* icon1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 84385F40189D910400C21742 /* icon1.PNG */; };
+		84385F44189D910400C21742 /* icon2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 84385F41189D910400C21742 /* icon2.PNG */; };
+		84385F45189D910400C21742 /* icon3.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 84385F42189D910400C21742 /* icon3.PNG */; };
+		84385F47189D92A800C21742 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84385F46189D92A800C21742 /* images.xcassets */; };
+		84385F4C189DAA0D00C21742 /* splash copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 84385F4B189DAA0D00C21742 /* splash copy.png */; };
+		84385F4E189DAA4D00C21742 /* splash copy 2 960.png in Resources */ = {isa = PBXBuildFile; fileRef = 84385F4D189DAA4D00C21742 /* splash copy 2 960.png */; };
 		88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813377F189CFE7C002EEA08 /* DejalActivityView.m */; };
 		8813378E189D01C8002EEA08 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133784189D01C8002EEA08 /* NZAlertViewColor.m */; };
 		88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */; };
@@ -78,6 +84,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84385F40189D910400C21742 /* icon1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.PNG; sourceTree = "<group>"; };
+		84385F41189D910400C21742 /* icon2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.PNG; sourceTree = "<group>"; };
+		84385F42189D910400C21742 /* icon3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.PNG; sourceTree = "<group>"; };
+		84385F46189D92A800C21742 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		84385F4B189DAA0D00C21742 /* splash copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash copy.png"; sourceTree = "<group>"; };
+		84385F4D189DAA4D00C21742 /* splash copy 2 960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash copy 2 960.png"; sourceTree = "<group>"; };
 		8813377E189CFE7C002EEA08 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
 		8813377F189CFE7C002EEA08 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		88133783189D01C8002EEA08 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
@@ -211,6 +223,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84385F3C189D90BE00C21742 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				84385F4B189DAA0D00C21742 /* splash copy.png */,
+				84385F4D189DAA4D00C21742 /* splash copy 2 960.png */,
+				84385F41189D910400C21742 /* icon2.PNG */,
+				84385F40189D910400C21742 /* icon1.PNG */,
+				84385F42189D910400C21742 /* icon3.PNG */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		8813377D189CFE7C002EEA08 /* DejalActivityView */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +383,7 @@
 		887C9ACC189B5989008910C8 = {
 			isa = PBXGroup;
 			children = (
+				84385F46189D92A800C21742 /* images.xcassets */,
 				887C9ADE189B598A008910C8 /* IdeaBook */,
 				887C9AD7189B5989008910C8 /* Frameworks */,
 				887C9AD6189B5989008910C8 /* Products */,
@@ -391,6 +416,7 @@
 		887C9ADE189B598A008910C8 /* IdeaBook */ = {
 			isa = PBXGroup;
 			children = (
+				84385F3C189D90BE00C21742 /* images */,
 				88133794189D0331002EEA08 /* UIImage-Helpers */,
 				88133781189D01C8002EEA08 /* NZAlertView */,
 				8813377D189CFE7C002EEA08 /* DejalActivityView */,
@@ -525,13 +551,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84385F4C189DAA0D00C21742 /* splash copy.png in Resources */,
 				88133793189D01C8002EEA08 /* NZAlertView.xib in Resources */,
+				84385F4E189DAA4D00C21742 /* splash copy 2 960.png in Resources */,
 				88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */,
+				84385F45189D910400C21742 /* icon3.PNG in Resources */,
 				887C9AF7189B598A008910C8 /* Images.xcassets in Resources */,
 				884B3A6B189C8DE700CB00A6 /* LICENSE in Resources */,
 				884B3A6C189C8DE700CB00A6 /* README.md in Resources */,
 				887C9AEC189B598A008910C8 /* Main.storyboard in Resources */,
+				84385F47189D92A800C21742 /* images.xcassets in Resources */,
+				84385F43189D910400C21742 /* icon1.PNG in Resources */,
 				887C9AE3189B598A008910C8 /* InfoPlist.strings in Resources */,
+				84385F44189D910400C21742 /* icon2.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,7 +741,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwei Bu (9L4ENBJ447)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IdeaBook/IdeaBook-Prefix.pch";
@@ -726,7 +757,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwei Bu (9L4ENBJ447)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IdeaBook/IdeaBook-Prefix.pch";

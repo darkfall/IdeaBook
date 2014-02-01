@@ -14,6 +14,8 @@
 #import "IdeaTableViewCell.h"
 #import "Models/Idea.h"
 
+#define kMaxIdeaTitleLength 20
+
 @interface IdeaViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *ideaTableView;
@@ -41,16 +43,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     IdeaTableViewCell *cell = (IdeaTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ideaCell" forIndexPath:indexPath];
     NSMutableArray* ideas = [[IdeaManager sharedInstance] ideas];
+    
     Idea* idea = [ideas objectAtIndex:indexPath.row];
     if([idea.shared boolValue]) {
         cell.ideaSharedIcon.image = [UIImage imageNamed:@"brightness.png"];
     } else {
         cell.ideaSharedIcon.image = nil;
     }
-    if(idea.content.length < 16) {
+    if(idea.content.length < kMaxIdeaTitleLength) {
         cell.ideaTitle.text = idea.content;
     } else {
-        cell.ideaTitle.text = [[idea.content substringWithRange:NSMakeRange(0, 13)] stringByAppendingString:@"..."];
+        cell.ideaTitle.text = [[idea.content substringWithRange:NSMakeRange(0, kMaxIdeaTitleLength - 3)] stringByAppendingString:@"..."];
     }
     cell.ideaCreationTime.text = idea.time;
     return cell;

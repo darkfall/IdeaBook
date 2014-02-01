@@ -8,16 +8,16 @@
 
 #import "IdeaDetailViewController.h"
 
+#import "Models/Idea.h"
+#import "DejalActivityView.h"
+
 #import "Utils/IdeaManager.h"
 #import "Utils/UserManager.h"
-#import "Models/Idea.h"
-
-#import "DejalActivityView.h"
 #import "Utils/ServerAPI.h"
+#import "Utils/GeoLocationManager.h"
+#import "Utils/AlertHelper.h"
 
-#import "NZAlertView/NZAlertView.h"
-
-#import "GeoLocationManager.h"
+#import "NZAlertView.h"
 
 @interface IdeaDetailViewController ()
 
@@ -75,19 +75,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)showAlert:(NSString*)title message:(NSString*)message style:(NSInteger)style {
-    NZAlertView *alert = [[NZAlertView alloc] initWithStyle:style
-                                                      title:title
-                                                    message:message
-                                                   delegate:nil];
-    
-    [alert setAlertDuration:1.5f];
-    [alert setBlurParameter:0.1f];
-    [alert setTextAlignment:NSTextAlignmentCenter];
-    
-    [alert show];
-}
-
 - (IBAction)shareButtonClicked:(id)sender {
     CLLocation* lastLoc = [[GeoLocationManager sharedInstance] lastLocation];
     _idea.latitude = [NSNumber numberWithDouble:lastLoc.coordinate.latitude];
@@ -101,16 +88,16 @@
             
             [[IdeaManager sharedInstance] ideaChanged:_idea withNotification:YES];
             
-            [self showAlert:@"Info" message:@"Idea shared" style:NZAlertStyleSuccess];
+            [AlertHelper showNZAlert:@"Info" message:@"Idea shared" style:NZAlertStyleSuccess];
         } fail:^{
             [DejalActivityView removeView];
             
-            [self showAlert:@"Info" message:@"Share idea failed" style:NZAlertStyleError];
+            [AlertHelper showNZAlert:@"Error" message:@"Share idea failed" style:NZAlertStyleError];
         }];
         
     } else {
         
-        [self showAlert:@"Info" message:@"Idea already shared" style:NZAlertStyleInfo];
+        [AlertHelper showNZAlert:@"Error" message:@"Idea already shared" style:NZAlertStyleInfo];
     }
 }
 

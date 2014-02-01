@@ -9,38 +9,94 @@
 #import "IdeaNearbyViewController.h"
 #import "SWRevealViewController/SWRevealViewController.h"
 
+#import "Utils/ServerAPI.h"
+#import "Utils/GeoLocationManager.h"
+#import "Utils/AlertHelper.h"
+
+#import "Models/Idea.h"
+
+#import "NZAlertView/NZAlertView.h"
+
+#import "IdeaNearbyTableViewCell.h"
+
+#define kMaxIdeaTitleLength 20
+
 @interface IdeaNearbyViewController ()
 
-@property (nonatomic, strong) NSArray* tableItems;
+@property (nonatomic, strong) NSMutableArray* nearbyIdeas;
+@property (strong, nonatomic) IBOutlet UITableView *ideasTableView;
 
 @end
 
 @implementation IdeaNearbyViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    _tableItems = @[@"test1", @"test2"];
+    
+    UIRefreshControl* refresh = [UIRefreshControl new];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
+    [refresh addTarget:self
+                action:@selector(refreshNearbyIdeas:)
+      forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refresh;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+    self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
+    [self.refreshControl beginRefreshing];
+    [self refreshNearbyIdeas:nil];
 }
 
+- (void)refreshNearbyIdeas: (id) sender {
+    CLLocation* lastLoc = [[GeoLocationManager sharedInstance] lastLocation];
+    if(lastLoc) {
+        [ServerAPI getIdeasNearby:lastLoc.coordinate.longitude longitude:lastLoc.coordinate.longitude success:^(NSArray* ideas) {
+            
+            [self.refreshControl endRefreshing];
+            
+            _nearbyIdeas = [NSMutableArray arrayWithArray:ideas];
+            [_ideasTableView reloadData];
+            
+            [AlertHelper showNZAlert:@"Info"
+                             message:[NSString stringWithFormat:@"Found %i nearby ideas", [_nearbyIdeas count]]
+                               style:NZAlertStyleSuccess];
+        
+        } fail:^{
+            
+            [self.refreshControl endRefreshing];
+            
+            [AlertHelper showNZAlert:@"Error"
+                             message:@"Failed getting nearby ideas"
+                               style:NZAlertStyleError];
+
+        }];
+    } else {
+        [AlertHelper showNZAlert:@"Error"
+                         message:@"Failed getting current location"
+                           style:NZAlertStyleError];
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableItems count];
+    return [_nearbyIdeas count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ideaNearbyCell" forIndexPath:indexPath];
-    cell.textLabel.text = [_tableItems objectAtIndex:indexPath.row];
+    IdeaNearbyTableViewCell *cell = (IdeaNearbyTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ideaNearbyCell" forIndexPath:indexPath];
+    
+    Idea* idea =  [_nearbyIdeas objectAtIndex:indexPath.row];
+    if(idea.content.length < kMaxIdeaTitleLength) {
+        cell.ideaTitle.text = idea.content;
+    } else {
+        cell.ideaTitle.text = [[idea.content substringWithRange:NSMakeRange(0, kMaxIdeaTitleLength - 3)] stringByAppendingString:@"..."];
+    }
+    
     return cell;
 }
 

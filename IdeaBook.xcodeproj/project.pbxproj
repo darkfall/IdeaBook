@@ -9,16 +9,14 @@
 /* Begin PBXBuildFile section */
 		88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813377F189CFE7C002EEA08 /* DejalActivityView.m */; };
 		8813378E189D01C8002EEA08 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133784189D01C8002EEA08 /* NZAlertViewColor.m */; };
-		8813378F189D01C8002EEA08 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 88133785189D01C8002EEA08 /* LICENSE */; };
 		88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */; };
 		88133791189D01C8002EEA08 /* NZAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133788189D01C8002EEA08 /* NZAlertView.m */; };
-		88133792189D01C8002EEA08 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8813378B189D01C8002EEA08 /* README.md */; };
 		88133793189D01C8002EEA08 /* NZAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8813378D189D01C8002EEA08 /* NZAlertView.xib */; };
-		8813379E189D0331002EEA08 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 88133795189D0331002EEA08 /* LICENSE */; };
-		8813379F189D0331002EEA08 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88133796189D0331002EEA08 /* README.md */; };
 		881337A0189D0331002EEA08 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133798189D0331002EEA08 /* UIImage+Blur.m */; };
 		881337A1189D0331002EEA08 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813379A189D0331002EEA08 /* UIImage+ImageWithColor.m */; };
 		881337A2189D0331002EEA08 /* UIImage+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813379C189D0331002EEA08 /* UIImage+Screenshot.m */; };
+		881337A5189D139F002EEA08 /* AlertHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 881337A4189D139F002EEA08 /* AlertHelper.m */; };
+		881337A8189D14F4002EEA08 /* IdeaNearbyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 881337A7189D14F4002EEA08 /* IdeaNearbyTableViewCell.m */; };
 		884B3A2D189B86B000CB00A6 /* PopModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A2A189B86B000CB00A6 /* PopModalSegue.m */; };
 		884B3A2E189B86B000CB00A6 /* ResizeModelViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A2C189B86B000CB00A6 /* ResizeModelViewSegue.m */; };
 		884B3A32189C83AA00CB00A6 /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A31189C83AA00CB00A6 /* Idea.m */; };
@@ -84,15 +82,11 @@
 		8813377F189CFE7C002EEA08 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		88133783189D01C8002EEA08 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
 		88133784189D01C8002EEA08 /* NZAlertViewColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZAlertViewColor.m; sourceTree = "<group>"; };
-		88133785189D01C8002EEA08 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "NZAlertView-Icons.bundle"; sourceTree = "<group>"; };
 		88133787189D01C8002EEA08 /* NZAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertView.h; sourceTree = "<group>"; };
 		88133788189D01C8002EEA08 /* NZAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NZAlertView.m; sourceTree = "<group>"; };
 		8813378A189D01C8002EEA08 /* NZAlertViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewDelegate.h; sourceTree = "<group>"; };
-		8813378B189D01C8002EEA08 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		8813378D189D01C8002EEA08 /* NZAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NZAlertView.xib; sourceTree = "<group>"; };
-		88133795189D0331002EEA08 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		88133796189D0331002EEA08 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		88133797189D0331002EEA08 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
 		88133798189D0331002EEA08 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
 		88133799189D0331002EEA08 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
@@ -100,6 +94,10 @@
 		8813379B189D0331002EEA08 /* UIImage+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Screenshot.h"; sourceTree = "<group>"; };
 		8813379C189D0331002EEA08 /* UIImage+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Screenshot.m"; sourceTree = "<group>"; };
 		8813379D189D0331002EEA08 /* UIImage-Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Helpers.h"; sourceTree = "<group>"; };
+		881337A3189D139F002EEA08 /* AlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertHelper.h; sourceTree = "<group>"; };
+		881337A4189D139F002EEA08 /* AlertHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertHelper.m; sourceTree = "<group>"; };
+		881337A6189D14F4002EEA08 /* IdeaNearbyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyTableViewCell.h; sourceTree = "<group>"; };
+		881337A7189D14F4002EEA08 /* IdeaNearbyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaNearbyTableViewCell.m; sourceTree = "<group>"; };
 		884B3A29189B86B000CB00A6 /* PopModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopModalSegue.h; path = Segues/PopModalSegue.h; sourceTree = "<group>"; };
 		884B3A2A189B86B000CB00A6 /* PopModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopModalSegue.m; path = Segues/PopModalSegue.m; sourceTree = "<group>"; };
 		884B3A2B189B86B000CB00A6 /* ResizeModelViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResizeModelViewSegue.h; path = Segues/ResizeModelViewSegue.h; sourceTree = "<group>"; };
@@ -226,12 +224,10 @@
 			isa = PBXGroup;
 			children = (
 				88133782189D01C8002EEA08 /* Helpers */,
-				88133785189D01C8002EEA08 /* LICENSE */,
 				88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */,
 				88133787189D01C8002EEA08 /* NZAlertView.h */,
 				88133788189D01C8002EEA08 /* NZAlertView.m */,
 				88133789189D01C8002EEA08 /* Protocols */,
-				8813378B189D01C8002EEA08 /* README.md */,
 				8813378C189D01C8002EEA08 /* Views */,
 			);
 			path = NZAlertView;
@@ -265,8 +261,6 @@
 		88133794189D0331002EEA08 /* UIImage-Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				88133795189D0331002EEA08 /* LICENSE */,
-				88133796189D0331002EEA08 /* README.md */,
 				88133797189D0331002EEA08 /* UIImage+Blur.h */,
 				88133798189D0331002EEA08 /* UIImage+Blur.m */,
 				88133799189D0331002EEA08 /* UIImage+ImageWithColor.h */,
@@ -319,6 +313,8 @@
 				884B3A74189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m */,
 				88FF7858189CDD4D004366FA /* IdeaManager.h */,
 				88FF7859189CDD4D004366FA /* IdeaManager.m */,
+				881337A3189D139F002EEA08 /* AlertHelper.h */,
+				881337A4189D139F002EEA08 /* AlertHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -416,6 +412,8 @@
 				88FF7854189CCE1F004366FA /* NewIdeaViewController.m */,
 				887C9AF3189B598A008910C8 /* IdeaNearbyViewController.h */,
 				887C9AF4189B598A008910C8 /* IdeaNearbyViewController.m */,
+				881337A6189D14F4002EEA08 /* IdeaNearbyTableViewCell.h */,
+				881337A7189D14F4002EEA08 /* IdeaNearbyTableViewCell.m */,
 				887C9B13189B5AFA008910C8 /* UsersNearbyViewController.h */,
 				887C9B14189B5AFA008910C8 /* UsersNearbyViewController.m */,
 				887C9B16189B5D51008910C8 /* SettingsViewController.h */,
@@ -528,15 +526,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				88133793189D01C8002EEA08 /* NZAlertView.xib in Resources */,
-				8813378F189D01C8002EEA08 /* LICENSE in Resources */,
 				88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */,
 				887C9AF7189B598A008910C8 /* Images.xcassets in Resources */,
-				8813379E189D0331002EEA08 /* LICENSE in Resources */,
 				884B3A6B189C8DE700CB00A6 /* LICENSE in Resources */,
 				884B3A6C189C8DE700CB00A6 /* README.md in Resources */,
 				887C9AEC189B598A008910C8 /* Main.storyboard in Resources */,
-				88133792189D01C8002EEA08 /* README.md in Resources */,
-				8813379F189D0331002EEA08 /* README.md in Resources */,
 				887C9AE3189B598A008910C8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +575,7 @@
 				884B3A6F189C932C00CB00A6 /* JSONSerialization.m in Sources */,
 				887C9AF2189B598A008910C8 /* IdeaViewController.m in Sources */,
 				881337A2189D0331002EEA08 /* UIImage+Screenshot.m in Sources */,
+				881337A5189D139F002EEA08 /* AlertHelper.m in Sources */,
 				884B3A3B189C841000CB00A6 /* IdeaUser.m in Sources */,
 				887C9AE5189B598A008910C8 /* main.m in Sources */,
 				88FF785A189CDD4D004366FA /* IdeaManager.m in Sources */,
@@ -593,6 +588,7 @@
 				884B3A68189C8DE700CB00A6 /* AFURLRequestSerialization.m in Sources */,
 				884B3A62189C8DE700CB00A6 /* AFHTTPRequestOperation.m in Sources */,
 				884B3A69189C8DE700CB00A6 /* AFURLResponseSerialization.m in Sources */,
+				881337A8189D14F4002EEA08 /* IdeaNearbyTableViewCell.m in Sources */,
 				884B3A2D189B86B000CB00A6 /* PopModalSegue.m in Sources */,
 				88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */,
 			);

@@ -130,13 +130,9 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
         cell.ideaContent.text = _idea.content;
         cell.userNameLabel.text = _idea.username;
         
-        float dist = [[GeoLocationManager sharedInstance] distanceFromCurrentLocation:[_idea.latitude floatValue]
-                                                                            longitude:[_idea.longitude floatValue]];
-        if(dist > 0) {
-            cell.distanceLabel.text = [NSString stringWithFormat:@"%.2fmi away", dist];
-        } else {
-            cell.distanceLabel.text = @"unknown mi away";
-        }
+        cell.distanceLabel.text = [[GeoLocationManager sharedInstance] stringDistanceFromCurrentLocation:[_idea.latitude doubleValue]
+                                                                                               longitude:[_idea.longitude doubleValue]];
+        
         
         cell.numLikeDislikeLabel.text = [NSString stringWithFormat:@"%d likes   %d dislikes", [[_idea likes] intValue], [[_idea dislikes] intValue]];
         

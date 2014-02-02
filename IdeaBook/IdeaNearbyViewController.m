@@ -111,13 +111,8 @@
     cell.numLikesLabel.text = [NSString stringWithFormat:@"%i", [idea.likes intValue]];
     cell.numDislikesLabel.text = [NSString stringWithFormat:@"%i", [idea.dislikes intValue]];
     
-    float dist = [[GeoLocationManager sharedInstance] distanceFromCurrentLocation:[idea.latitude floatValue]
-                                                                        longitude:[idea.longitude floatValue]];
-    if(dist > 0) {
-        cell.distanceLabel.text = [NSString stringWithFormat:@"%.2fmi away", dist];
-    } else {
-        cell.distanceLabel.text = @"unknown mi away";
-    }
+    cell.distanceLabel.text = [[GeoLocationManager sharedInstance] stringDistanceFromCurrentLocation:[idea.latitude doubleValue]
+                                                                                           longitude:[idea.longitude doubleValue]];
     
     if([idea.liked intValue] > 0) {
         cell.likeImage.image = [UIImage imageNamed:@"smile_light"];

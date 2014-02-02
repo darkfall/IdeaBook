@@ -32,4 +32,15 @@
 
 - (CLLocationDistance)distanceFromCurrentLocation:(double)latitude longitude:(double)longitude;
 
+// Return a string representation of distance from current location
+// if service is disabled
+//      return "service disabled"
+// if unknown
+//      return "unknown mi away"
+// otherwise "DISTANCEmi away"
+- (NSString*)stringDistanceFromCurrentLocation:(double)latitude longitude:(double)longitude;
+
+// geocode a location with latitude and longitud
+- (void)geocodeLocation:(double)latitude longitude:(double)longitude completion:(void (^)(NSString* addr))completion fail:(void (^)(void))fail;
+
 @end

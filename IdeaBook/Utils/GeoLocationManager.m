@@ -7,6 +7,7 @@
 //
 
 #import "GeoLocationManager.h"
+#import "UserManager.h"
 
 @implementation GeoLocationManager
 
@@ -58,7 +59,40 @@
     }
 }
 
-// CLLocationManagerDelegate
+- (NSString*)stringDistanceFromCurrentLocation:(double)latitude longitude:(double)longitude {
+    if([UserManager getEnableLocationService]) {
+        float dist = [self distanceFromCurrentLocation:latitude
+                                             longitude:longitude];
+        return [NSString stringWithFormat:@"%.2fmi away", dist];
+    } else {
+        return @"service disabled";
+    }
+}
+
+- (void)geocodeLocation:(double)latitude longitude:(double)longitude completion:(void (^)(NSString* addr))completion fail:(void (^)(void))fail {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    CLLocation *location = [[CLLocation alloc]
+                             initWithLatitude:latitude longitude:longitude];
+    
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        if (error){
+            if(fail)
+                fail();
+            return;
+        }
+        if(placemarks && placemarks.count > 0) {
+            CLPlacemark* r = [placemarks objectAtIndex:0];
+            
+            NSArray* lines = r.addressDictionary[ @"FormattedAddressLines"];
+            NSString* address = [lines componentsJoinedByString:@"\n"];;
+            if(completion)
+                completion(address);
+        }
+    }];
+}
+
+#pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations {

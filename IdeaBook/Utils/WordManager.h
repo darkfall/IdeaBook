@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+// World manager for idea fountain
+
 @interface WordManager : UICollectionViewLayout
 
 + (WordManager*)sharedInstance;
 
 - (NSArray*)getWords;
-
 - (void)unload;
 
 @end

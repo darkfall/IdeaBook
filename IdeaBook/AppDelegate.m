@@ -28,6 +28,7 @@
 @implementation AppDelegate
 
 - (void)testInternet {
+    // just test google connection, if google is down, then the Internet maybe not so good
    _internetReachbility = [Reachability reachabilityWithHostname:@"www.google.com"];
         
    _internetReachbility.reachableBlock = ^(Reachability*reach) {
@@ -45,7 +46,9 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[GeoLocationManager sharedInstance] startUpdate];
+    
+    if([UserManager getEnableLocationService])
+        [[GeoLocationManager sharedInstance] startUpdate];
     
     [ServerAPI registerNewUser:[UserManager getCurrentUser] success:^{
         NSLog(@"[ServerAPI] Registration succeed");

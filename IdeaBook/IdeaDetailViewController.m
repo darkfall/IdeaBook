@@ -13,7 +13,7 @@
 
 #import "Utils/IdeaManager.h"
 #import "Utils/GeoLocationManager.h"
-
+#import "Utils/UserManager.h"
 #import "Utils/ServerAPI.h"
 
 @interface IdeaDetailViewController () {
@@ -57,6 +57,7 @@
     _ideaContent.delegate = self;
     _contentChanged = false;
     
+    [self updateDistance];
     [_ideaContent becomeFirstResponder];
 }
 
@@ -77,13 +78,15 @@
 
 - (void)updateDistance {
     if([_idea.shared boolValue]) {
-        float dist = [[GeoLocationManager sharedInstance] distanceFromCurrentLocation:[_idea.latitude floatValue]
-                                                                            longitude:[_idea.longitude floatValue]];
-        if(dist > 0) {
-            _distanceLabel.text = [NSString stringWithFormat:@"%.2fmi away", dist];
-        } else {
-            _distanceLabel.text = @"unknown mi away";
+        if([_idea.longitude floatValue] == 0.f && [_idea.latitude floatValue] == 0.f) {
+            CLLocation* loc = [[GeoLocationManager sharedInstance] lastLocation];
+            if(loc != nil) {
+                _idea.latitude = [NSNumber numberWithDouble:loc.coordinate.latitude];
+                _idea.longitude = [NSNumber numberWithDouble:loc.coordinate.longitude];
+            }
         }
+        _distanceLabel.text =  [[GeoLocationManager sharedInstance] stringDistanceFromCurrentLocation:[_idea.latitude doubleValue]
+                                                                                            longitude:[_idea.longitude doubleValue]];
     } else {
         _distanceLabel.text = @"not shared";
     }

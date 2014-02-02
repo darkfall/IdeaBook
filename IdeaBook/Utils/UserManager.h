@@ -16,4 +16,7 @@
 + (void)saveCurrentUser;
 + (bool)userExists;
 
++ (void)setEnableLocationService:(bool)flag;
++ (bool)getEnableLocationService;
+
 @end

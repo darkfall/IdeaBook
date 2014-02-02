@@ -10,9 +10,16 @@
 
 @implementation NSUserDefaults (NSUserDefaultsDefaultValue)
 
-- (NSString*)stringForKey:(NSString *)defaultName defaultValue:(NSString *)defaultValue {
+- (NSString*)stringForKey:(NSString*)defaultName defaultValue:(NSString*)defaultValue {
     NSString* value = [self stringForKey:defaultName];
     return value != nil ? value : defaultValue;
+}
+
+- (bool)boolForKey:(NSString*)defaultName defaultValue:(bool)defaultValue {
+    if([self objectForKey:defaultName] != nil) {
+        return [self boolForKey:defaultName];
+    }
+    return defaultValue;
 }
 
 @end

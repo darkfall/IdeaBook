@@ -9,10 +9,16 @@
 #import "SettingsViewController.h"
 #import "SWRevealViewController/SWRevealViewController.h"
 
+#import "Utils/UserManager.h"
+#import "Utils/GeoLocationManager.h"
+
+#import "Models/IdeaUser.h"
+
 @interface SettingsViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *locationServiceSwitch;
 
-@property (nonatomic, strong) NSArray* settingsIdentifiers;
 
 @end
 
@@ -22,6 +28,17 @@
     [super viewDidLoad];
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    [_userNameLabel setReturnKeyType:UIReturnKeyDone];
+    _userNameLabel.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    _userNameLabel.text = [UserManager getCurrentUser].name;
+    _locationServiceSwitch.on = [UserManager getEnableLocationService];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,23 +46,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITextFieldDelegate
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.settingsIdentifiers count];
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [UserManager getCurrentUser].name = _userNameLabel.text;
+    [UserManager saveCurrentUser];
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = [self.settingsIdentifiers objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
-    
-    // adjusting selection color
-    UIView *selectionColor = [[UIView alloc] init];
-    selectionColor.backgroundColor = [UIColor colorWithRed:(226/255.0) green:(148/255.0) blue:(59/255.0) alpha:1];
-    cell.selectedBackgroundView = selectionColor;
-    
-    return cell;
+- (IBAction)enableLocationServiceChanged:(id)sender {
+    [UserManager setEnableLocationService:_locationServiceSwitch.on];
+    if(_locationServiceSwitch.on) {
+        [[GeoLocationManager sharedInstance] startUpdate];
+    } else {
+        [[GeoLocationManager sharedInstance] stopUpdate];
+    }
 }
 
 - (IBAction)showSidebar:(id)sender {

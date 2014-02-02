@@ -359,6 +359,8 @@
 		884B3A3C189C85C500CB00A6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				884B3A73189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.h */,
+				884B3A74189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m */,
 				884B3A46189C86E300CB00A6 /* GeoLocationManager.h */,
 				884B3A47189C86E300CB00A6 /* GeoLocationManager.m */,
 				884B3A49189C8C6000CB00A6 /* ServerAPI.h */,
@@ -367,8 +369,6 @@
 				884B3A6E189C932C00CB00A6 /* JSONSerialization.m */,
 				884B3A70189C9A9700CB00A6 /* UserManager.h */,
 				884B3A71189C9A9700CB00A6 /* UserManager.m */,
-				884B3A73189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.h */,
-				884B3A74189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m */,
 				88FF7858189CDD4D004366FA /* IdeaManager.h */,
 				88FF7859189CDD4D004366FA /* IdeaManager.m */,
 				881337A3189D139F002EEA08 /* AlertHelper.h */,

@@ -12,6 +12,7 @@
 
 @interface NSUserDefaults (NSUserDefaultsDefaultValue)
 
-- (NSString*)stringForKey:(NSString *)defaultName defaultValue:(NSString *)defaultValue;
+- (NSString*)stringForKey:(NSString*)defaultName defaultValue:(NSString*)defaultValue;
+- (bool)boolForKey:(NSString*)defaultName defaultValue:(bool)defaultValue;
 
 @end

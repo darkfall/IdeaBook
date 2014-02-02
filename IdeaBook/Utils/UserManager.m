@@ -10,11 +10,12 @@
 #import "NSUserDefaults+DefaultValue.h"
 #import "../Models/IdeaUser.h"
 
-#define kUserUUIDKey @"UserUUID"
-#define kUserNameKey @"UserName"
-#define kUserAvatarPathKey @"UserAvatar"
-#define kUserLongitudeKey @"UserLongitude"
-#define kUserLatitudeKey @"UserLatitude"
+#define kUserUUIDKey @"ibUserUUID"
+#define kUserNameKey @"ibUserName"
+#define kUserAvatarPathKey @"ibUserAvatar"
+#define kUserLongitudeKey @"ibUserLongitude"
+#define kUserLatitudeKey @"ibUserLatitude"
+#define kEnableLocationServiceKey @"ibEnableLocationService"
 
 @implementation UserManager
 
@@ -65,5 +66,17 @@ static IdeaUser* user = nil;
 + (bool)userExists {
     return [[NSUserDefaults standardUserDefaults] stringForKey:kUserUUIDKey] != nil;
 }
+
+
+
++ (void)setEnableLocationService:(bool)flag {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[NSNumber numberWithBool:flag] forKey:kEnableLocationServiceKey];
+}
+
++ (bool)getEnableLocationService {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kEnableLocationServiceKey defaultValue:true];
+}
+
 
 @end

@@ -10,6 +10,6 @@
 
 #import "SWRevealViewController.h"
 
-@interface IdeaFountainViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, SWRevealViewControllerDelegate>
+@interface IdeaFountainViewController : UICollectionViewController<SWRevealViewControllerDelegate>
 
 @end

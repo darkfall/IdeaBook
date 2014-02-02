@@ -65,6 +65,7 @@
 		887C9B1C189B5EDE008910C8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9B1B189B5EDE008910C8 /* SWRevealViewController.m */; };
 		887C9B2C189B667A008910C8 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9B2B189B667A008910C8 /* SidebarViewController.m */; };
 		889D772F189DFDE3005DD687 /* StashedIdeasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889D772E189DFDE3005DD687 /* StashedIdeasViewController.m */; };
+		889D7730189E130D005DD687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887C9AEA189B598A008910C8 /* Main.storyboard */; };
 		88FF7855189CCE1F004366FA /* NewIdeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7854189CCE1F004366FA /* NewIdeaViewController.m */; };
 		88FF785A189CDD4D004366FA /* IdeaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7859189CDD4D004366FA /* IdeaManager.m */; };
 		88FF785D189CE727004366FA /* IdeaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF785C189CE727004366FA /* IdeaTableViewCell.m */; };
@@ -575,6 +576,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889D7730189E130D005DD687 /* Main.storyboard in Resources */,
 				881337AB189DB711002EEA08 /* words.db in Resources */,
 				88133793189D01C8002EEA08 /* NZAlertView.xib in Resources */,
 				88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */,

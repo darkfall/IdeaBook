@@ -30,10 +30,6 @@
 
 @property (weak, nonatomic) NSArray* availableWords;
 
-
-@property (unsafe_unretained, nonatomic) IBOutlet UIButton *reloadButton;
-@property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *collectionView;
-
 @end
 
 @implementation IdeaFountainViewController
@@ -56,7 +52,7 @@
     
     {
         UIButton* stashedIdeaButton = [[UIButton alloc] init];
-        [stashedIdeaButton setFrame:CGRectMake(216, 386, 100, 30)];
+        [stashedIdeaButton setFrame:CGRectMake(216, 446, 100, 30)];
         [stashedIdeaButton setTitleColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
         [stashedIdeaButton setTitle:@"Create Idea" forState:UIControlStateNormal];
         
@@ -68,7 +64,7 @@
         [self.view addSubview:stashedIdeaButton];
         [self.view bringSubviewToFront:stashedIdeaButton];
         
-        UILabel* hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 386, 200, 30)];
+        UILabel* hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 446, 200, 30)];
         hintLabel.text = @"Click on a idea to stash it";
         hintLabel.font = [UIFont systemFontOfSize:12];
         hintLabel.textColor = [UIColor lightGrayColor];
@@ -76,7 +72,6 @@
         [self.view addSubview:hintLabel];
         [self.view bringSubviewToFront:hintLabel];
     }
-    
     [self runIdeaFountain];
 }
 
@@ -90,7 +85,7 @@
     _availableWords = [[WordManager sharedInstance] getWords];
     
     if(_availableWords != nil) {
-        
+        [self ideaFountainTick:nil];
         [self resume];
         
     } else {

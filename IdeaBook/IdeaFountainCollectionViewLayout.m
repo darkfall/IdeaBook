@@ -60,7 +60,7 @@
 
 
 -(CGSize)collectionViewContentSize {
-    return self.collectionView.bounds.size;
+    return CGSizeMake(self.collectionView.bounds.size.width, 416);
 }
 
 -(void)prepareForCollectionViewUpdates:(NSArray *)updateItems {

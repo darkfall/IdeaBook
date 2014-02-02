@@ -8,6 +8,10 @@
 
 #import "IdeaFountainViewCell.h"
 
+@interface IdeaFountainViewCell ()
+
+@end
+
 @implementation IdeaFountainViewCell
 
 - (id)initWithFrame:(CGRect)frame

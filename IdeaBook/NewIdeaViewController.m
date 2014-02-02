@@ -17,8 +17,7 @@
 
 @implementation NewIdeaViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     _ideaContentTextView.delegate = self;
@@ -26,8 +25,7 @@
     [_ideaContentTextView becomeFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
@@ -35,8 +33,13 @@
 
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 
+}
+
+
+- (void)setIdeaContent:(NSString*)content {
+    _ideaContentTextView.text = content;
 }
 
 - (IBAction)doneClicked:(id)sender {

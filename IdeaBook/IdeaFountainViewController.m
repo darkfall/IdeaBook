@@ -10,11 +10,29 @@
 #import "IdeaFountainViewCell.h"
 #import "IdeaFountainCollectionViewLayout.h"
 
+#import "SWRevealViewController.h"
+
+#import "Utils/WordManager.h"
+#import "Utils/AlertHelper.h"
+
+#import "Segues/ModalViewSegue.h"
+
+#import "NewIdeaViewController.h"
+
+#import "NZAlertView.h"
+
 @interface IdeaFountainViewController () {
     NSTimer* _newWordTimer;
 }
 
 @property (strong, nonatomic) NSMutableArray* currentWords;
+@property (strong, nonatomic) NSMutableArray* stashedIndexes;
+
+@property (weak, nonatomic) NSArray* availableWords;
+
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *reloadButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -30,7 +48,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _currentWords = [[NSMutableArray alloc] init];
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    {
+        UIButton* stashedIdeaButton = [[UIButton alloc] init];
+        [stashedIdeaButton setFrame:CGRectMake(210, 386, 100, 30)];
+        [stashedIdeaButton setTitleColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+        [stashedIdeaButton setTitle:@"Create Idea" forState:UIControlStateNormal];
+        
+        stashedIdeaButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [stashedIdeaButton addTarget:self
+                              action:@selector(onStashedIdeaClicked:)
+                    forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:stashedIdeaButton];
+        [self.view bringSubviewToFront:stashedIdeaButton];
+    }
     
     [self runIdeaFountain];
 }
@@ -40,8 +76,25 @@
 }
 
 - (void) runIdeaFountain {
-    [self ideaFountainTick:nil];
+    _currentWords = [[NSMutableArray alloc] init];
+    _stashedIndexes = [[NSMutableArray alloc] init];
+    _availableWords = [[WordManager sharedInstance] getWords];
     
+    if(_availableWords != nil) {
+        
+        [self ideaFountainTick:nil];
+        [self resume];
+        
+    } else {
+        [AlertHelper showNZAlert:@"Error" message:@"Unable to load idea word list" style:NZAlertStyleError];
+    }
+}
+
+- (void)pause {
+    [_newWordTimer invalidate];
+}
+
+- (void)resume {
     _newWordTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                      target:self
                                                    selector:@selector(ideaFountainTick:)
@@ -49,10 +102,11 @@
                                                     repeats:YES];
 }
 
-- (void) ideaFountainTick:(NSTimer *) timer {
+- (void)ideaFountainTick:(NSTimer *) timer {
     [self.collectionView performBatchUpdates:^{
-        [_currentWords addObject:@[@"Hell World"]];
-                [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_currentWords count] - 1 inSection:0]]];
+        [_currentWords addObject: [_availableWords objectAtIndex:arc4random() % _availableWords.count]];
+        [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:[_currentWords count] - 1 inSection:0]]];
+        
     } completion:nil];
 }
 
@@ -60,7 +114,7 @@
     [_newWordTimer invalidate];
     
     [self.collectionView performBatchUpdates:^{
-        IdeaFountainCollectionViewLayout* layout = (IdeaFountainCollectionViewLayout*)self.collectionViewLayout;
+        IdeaFountainCollectionViewLayout* layout = (IdeaFountainCollectionViewLayout*)self.collectionView.collectionViewLayout;
         [layout reset];
         
         NSMutableArray* indexPaths = [[NSMutableArray alloc] init];
@@ -91,12 +145,63 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     IdeaFountainViewCell *cell = (IdeaFountainViewCell*)[self.collectionView dequeueReusableCellWithReuseIdentifier:@"wordCell" forIndexPath:indexPath];
+
+    cell.stashed = false;
+    
+    cell.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+    cell.wordLabel.textColor = [UIColor blackColor];
+
+    cell.wordLabel.text = [_currentWords objectAtIndex:indexPath.row];
+    cell.wordLabel.textAlignment = NSTextAlignmentCenter;
     
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    IdeaFountainViewCell *datasetCell = (IdeaFountainViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    
+    if(!datasetCell.stashed) {
+        datasetCell.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+        datasetCell.wordLabel.textColor = [UIColor lightGrayColor];
+        
+        IdeaFountainCollectionViewLayout* layout = (IdeaFountainCollectionViewLayout*)self.collectionView.collectionViewLayout;
+        [layout removeGravityAtIndexPath:indexPath];
+        
+        [_stashedIndexes addObject:[NSNumber numberWithInt:indexPath.row]];
+    }
+}
+
+#pragma mark UICollectionViewDelegate methods
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+   
+    
+}
+
 - (IBAction)reloadClicked:(id)sender {
     [self resetIdeaFountain];
+}
+
+
+- (IBAction)showSidebar:(id)sender {
+    [self.revealViewController revealToggle:self];
+}
+
+- (void)onStashedIdeaClicked: (id)sender {
+    UIStoryboard* sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NewIdeaViewController* nv = [sb instantiateViewControllerWithIdentifier:@"newidea"];
+    
+    ModalViewSegue* segue = [[ModalViewSegue alloc] initWithIdentifier:@"shownewidea" source:self destination:nv];
+    [self prepareForSegue:segue sender:self];
+    [segue perform];
+    
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"shownewidea"]) {
+        NewIdeaViewController* newIdeaView = (NewIdeaViewController*)segue.destinationViewController;
+        
+    }
 }
 
 @end

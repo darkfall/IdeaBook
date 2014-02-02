@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UIDynamicAnimator* dynamicAnimator;
 @property (strong, nonatomic) UIGravityBehavior* gravityBehavior;
 
+@property (strong, nonatomic) UIGravityBehavior* gravityBehaviorNoGravity;
+
 @end
 
 @implementation IdeaFountainCollectionViewLayout
@@ -42,6 +44,9 @@
     _gravityBehavior = [[UIGravityBehavior alloc] init];
     _gravityBehavior.gravityDirection = CGVectorMake(0, 0.05);
     
+    _gravityBehaviorNoGravity = [[UIGravityBehavior alloc] init];
+    _gravityBehaviorNoGravity.gravityDirection = CGVectorMake(0, 0);
+    
     [_dynamicAnimator addBehavior:_gravityBehavior];
 }
 
@@ -65,17 +70,51 @@
         if (updateItem.updateAction == UICollectionUpdateActionInsert) {
             UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes
                                                             layoutAttributesForCellWithIndexPath:updateItem.indexPathAfterUpdate];
-        
+            
             int32_t w = arc4random() % ((int)self.collectionView.bounds.size.width - kCellItemWidth);
             attributes.frame = CGRectMake(w,
                                           self.collectionView.bounds.origin.y - kCellItemHeight,
                                           kCellItemWidth,
                                           kCellItemHeight);
             
-            [_gravityBehavior addItem:attributes];
-        } else if(updateItem.updateAction == UICollectionUpdateActionMove) {
             
-        }}];
+            
+            [_gravityBehavior addItem:attributes];
+           // [_gravityBehaviorNoGravity addItem:attributes];
+        }
+    }];
+}
+
+- (void)removeGravityAtIndexPath:(NSIndexPath*)indexPath {
+    UICollectionViewLayoutAttributes *attributes = [_dynamicAnimator layoutAttributesForCellAtIndexPath:indexPath];
+    
+    UIAttachmentBehavior *behaviour = [[UIAttachmentBehavior alloc] initWithItem:attributes
+                                                                  attachedToAnchor:CGPointMake(CGRectGetMidX(attributes.frame), CGRectGetMidY(attributes.frame))];
+    NSLog(@"%f, %f", attributes.frame.origin.x, attributes.frame.origin.y);
+    
+    behaviour.length = 0.0f;
+    behaviour.damping = 0.8f;
+    behaviour.frequency = 1.0f;
+    
+    [self.dynamicAnimator addBehavior:behaviour];
+    [_gravityBehavior removeItem:attributes];
+}
+
+-(void)removeItemAtIndexPath:(NSIndexPath *)indexPath completion:(void (^)(void))completion {
+    __block UICollectionViewLayoutAttributes *attributes = [_dynamicAnimator layoutAttributesForCellAtIndexPath:indexPath];
+    
+    double delayInSeconds = 2;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [_gravityBehavior removeItem:attributes];
+        
+        [self.collectionView performBatchUpdates:^{
+            completion();
+            [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+        } completion:nil];
+    });
+    
+    
 }
 
 @end

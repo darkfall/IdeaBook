@@ -1,5 +1,5 @@
 //
-//  IdeaFountainViewController.h
+//  WordManager.h
 //  IdeaBook
 //
 //  Created by Robert Bu on 2/1/14.
@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IdeaFountainViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface WordManager : UICollectionViewLayout
+
++ (WordManager*)sharedInstance;
+
+- (NSArray*)getWords;
+
+- (void)unload;
 
 @end

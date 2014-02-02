@@ -10,4 +10,6 @@
 
 @interface NewIdeaViewController : UIViewController <UITextViewDelegate>
 
+- (void)setIdeaContent:(NSString*)content;
+
 @end

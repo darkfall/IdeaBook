@@ -11,5 +11,8 @@
 @interface IdeaFountainCollectionViewLayout : UICollectionViewLayout
 
 - (void)reset;
+- (void)removeItemAtIndexPath:(NSIndexPath*)indexPath completion:(void (^)(void))completion;
+
+- (void)removeGravityAtIndexPath:(NSIndexPath*)indexPath;
 
 @end

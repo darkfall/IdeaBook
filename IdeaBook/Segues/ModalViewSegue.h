@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ResizeModelViewSegue : UIStoryboardSegue
+@interface ModalViewSegue : UIStoryboardSegue
 
 @end

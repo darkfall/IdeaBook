@@ -10,4 +10,8 @@
 
 @interface IdeaFountainViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+
+@property (nonatomic) bool stashed;
+
 @end

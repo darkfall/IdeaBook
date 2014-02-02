@@ -21,8 +21,9 @@
 		881337AF189DC47B002EEA08 /* IdeaFountainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881337AE189DC47B002EEA08 /* IdeaFountainViewController.m */; };
 		881337B2189DC48C002EEA08 /* IdeaFountainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 881337B1189DC48C002EEA08 /* IdeaFountainViewCell.m */; };
 		881337B5189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 881337B4189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.m */; };
+		881337B8189DDEE6002EEA08 /* WordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 881337B7189DDEE6002EEA08 /* WordManager.m */; };
 		884B3A2D189B86B000CB00A6 /* PopModalSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A2A189B86B000CB00A6 /* PopModalSegue.m */; };
-		884B3A2E189B86B000CB00A6 /* ResizeModelViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A2C189B86B000CB00A6 /* ResizeModelViewSegue.m */; };
+		884B3A2E189B86B000CB00A6 /* ModalViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A2C189B86B000CB00A6 /* ModalViewSegue.m */; };
 		884B3A32189C83AA00CB00A6 /* Idea.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A31189C83AA00CB00A6 /* Idea.m */; };
 		884B3A35189C83F700CB00A6 /* IdeaComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A34189C83F700CB00A6 /* IdeaComment.m */; };
 		884B3A38189C840100CB00A6 /* IdeaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 884B3A37189C840100CB00A6 /* IdeaCategory.m */; };
@@ -53,7 +54,6 @@
 		887C9AE3189B598A008910C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 887C9AE1189B598A008910C8 /* InfoPlist.strings */; };
 		887C9AE5189B598A008910C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9AE4189B598A008910C8 /* main.m */; };
 		887C9AE9189B598A008910C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9AE8189B598A008910C8 /* AppDelegate.m */; };
-		887C9AEC189B598A008910C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887C9AEA189B598A008910C8 /* Main.storyboard */; };
 		887C9AF2189B598A008910C8 /* IdeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9AF1189B598A008910C8 /* IdeaViewController.m */; };
 		887C9AF5189B598A008910C8 /* IdeaNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9AF4189B598A008910C8 /* IdeaNearbyViewController.m */; };
 		887C9AF7189B598A008910C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887C9AF6189B598A008910C8 /* Images.xcassets */; };
@@ -64,6 +64,7 @@
 		887C9B18189B5D51008910C8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9B17189B5D51008910C8 /* SettingsViewController.m */; };
 		887C9B1C189B5EDE008910C8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9B1B189B5EDE008910C8 /* SWRevealViewController.m */; };
 		887C9B2C189B667A008910C8 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C9B2B189B667A008910C8 /* SidebarViewController.m */; };
+		889D772F189DFDE3005DD687 /* StashedIdeasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889D772E189DFDE3005DD687 /* StashedIdeasViewController.m */; };
 		88FF7855189CCE1F004366FA /* NewIdeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7854189CCE1F004366FA /* NewIdeaViewController.m */; };
 		88FF785A189CDD4D004366FA /* IdeaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF7859189CDD4D004366FA /* IdeaManager.m */; };
 		88FF785D189CE727004366FA /* IdeaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF785C189CE727004366FA /* IdeaTableViewCell.m */; };
@@ -114,10 +115,12 @@
 		881337B1189DC48C002EEA08 /* IdeaFountainViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaFountainViewCell.m; sourceTree = "<group>"; };
 		881337B3189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaFountainCollectionViewLayout.h; sourceTree = "<group>"; };
 		881337B4189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaFountainCollectionViewLayout.m; sourceTree = "<group>"; };
+		881337B6189DDEE6002EEA08 /* WordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordManager.h; sourceTree = "<group>"; };
+		881337B7189DDEE6002EEA08 /* WordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordManager.m; sourceTree = "<group>"; };
 		884B3A29189B86B000CB00A6 /* PopModalSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopModalSegue.h; path = Segues/PopModalSegue.h; sourceTree = "<group>"; };
 		884B3A2A189B86B000CB00A6 /* PopModalSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopModalSegue.m; path = Segues/PopModalSegue.m; sourceTree = "<group>"; };
-		884B3A2B189B86B000CB00A6 /* ResizeModelViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResizeModelViewSegue.h; path = Segues/ResizeModelViewSegue.h; sourceTree = "<group>"; };
-		884B3A2C189B86B000CB00A6 /* ResizeModelViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResizeModelViewSegue.m; path = Segues/ResizeModelViewSegue.m; sourceTree = "<group>"; };
+		884B3A2B189B86B000CB00A6 /* ModalViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewSegue.h; path = Segues/ModalViewSegue.h; sourceTree = "<group>"; };
+		884B3A2C189B86B000CB00A6 /* ModalViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalViewSegue.m; path = Segues/ModalViewSegue.m; sourceTree = "<group>"; };
 		884B3A30189C83AA00CB00A6 /* Idea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Idea.h; sourceTree = "<group>"; };
 		884B3A31189C83AA00CB00A6 /* Idea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Idea.m; sourceTree = "<group>"; };
 		884B3A33189C83F700CB00A6 /* IdeaComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaComment.h; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 		887C9B1B189B5EDE008910C8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		887C9B2A189B667A008910C8 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
 		887C9B2B189B667A008910C8 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewController.m; sourceTree = "<group>"; };
+		889D772D189DFDE3005DD687 /* StashedIdeasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StashedIdeasViewController.h; sourceTree = "<group>"; };
+		889D772E189DFDE3005DD687 /* StashedIdeasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StashedIdeasViewController.m; sourceTree = "<group>"; };
 		88FF7853189CCE1F004366FA /* NewIdeaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewIdeaViewController.h; sourceTree = "<group>"; };
 		88FF7854189CCE1F004366FA /* NewIdeaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewIdeaViewController.m; sourceTree = "<group>"; };
 		88FF7858189CDD4D004366FA /* IdeaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaManager.h; sourceTree = "<group>"; };
@@ -311,8 +316,8 @@
 			children = (
 				884B3A29189B86B000CB00A6 /* PopModalSegue.h */,
 				884B3A2A189B86B000CB00A6 /* PopModalSegue.m */,
-				884B3A2B189B86B000CB00A6 /* ResizeModelViewSegue.h */,
-				884B3A2C189B86B000CB00A6 /* ResizeModelViewSegue.m */,
+				884B3A2B189B86B000CB00A6 /* ModalViewSegue.h */,
+				884B3A2C189B86B000CB00A6 /* ModalViewSegue.m */,
 			);
 			name = Segues;
 			sourceTree = "<group>";
@@ -349,6 +354,8 @@
 				88FF7859189CDD4D004366FA /* IdeaManager.m */,
 				881337A3189D139F002EEA08 /* AlertHelper.h */,
 				881337A4189D139F002EEA08 /* AlertHelper.m */,
+				881337B6189DDEE6002EEA08 /* WordManager.h */,
+				881337B7189DDEE6002EEA08 /* WordManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -463,6 +470,8 @@
 				881337B1189DC48C002EEA08 /* IdeaFountainViewCell.m */,
 				881337B3189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.h */,
 				881337B4189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.m */,
+				889D772D189DFDE3005DD687 /* StashedIdeasViewController.h */,
+				889D772E189DFDE3005DD687 /* StashedIdeasViewController.m */,
 				887C9AEA189B598A008910C8 /* Main.storyboard */,
 				887C9AF6189B598A008910C8 /* Images.xcassets */,
 				887C9ADF189B598A008910C8 /* Supporting Files */,
@@ -572,7 +581,6 @@
 				887C9AF7189B598A008910C8 /* Images.xcassets in Resources */,
 				884B3A6B189C8DE700CB00A6 /* LICENSE in Resources */,
 				884B3A6C189C8DE700CB00A6 /* README.md in Resources */,
-				887C9AEC189B598A008910C8 /* Main.storyboard in Resources */,
 				887C9AE3189B598A008910C8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,6 +619,7 @@
 				884B3A72189C9A9700CB00A6 /* UserManager.m in Sources */,
 				887C9B15189B5AFA008910C8 /* UsersNearbyViewController.m in Sources */,
 				884B3A32189C83AA00CB00A6 /* Idea.m in Sources */,
+				889D772F189DFDE3005DD687 /* StashedIdeasViewController.m in Sources */,
 				887C9B18189B5D51008910C8 /* SettingsViewController.m in Sources */,
 				884B3A63189C8DE700CB00A6 /* AFHTTPRequestOperationManager.m in Sources */,
 				884B3A6F189C932C00CB00A6 /* JSONSerialization.m in Sources */,
@@ -622,7 +631,7 @@
 				88FF785A189CDD4D004366FA /* IdeaManager.m in Sources */,
 				881337B2189DC48C002EEA08 /* IdeaFountainViewCell.m in Sources */,
 				881337AF189DC47B002EEA08 /* IdeaFountainViewController.m in Sources */,
-				884B3A2E189B86B000CB00A6 /* ResizeModelViewSegue.m in Sources */,
+				884B3A2E189B86B000CB00A6 /* ModalViewSegue.m in Sources */,
 				884B3A35189C83F700CB00A6 /* IdeaComment.m in Sources */,
 				88FF7864189CECFF004366FA /* IdeaDetailViewController.m in Sources */,
 				884B3A4B189C8C6000CB00A6 /* ServerAPI.m in Sources */,
@@ -630,6 +639,7 @@
 				884B3A48189C86E300CB00A6 /* GeoLocationManager.m in Sources */,
 				884B3A68189C8DE700CB00A6 /* AFURLRequestSerialization.m in Sources */,
 				884B3A62189C8DE700CB00A6 /* AFHTTPRequestOperation.m in Sources */,
+				881337B8189DDEE6002EEA08 /* WordManager.m in Sources */,
 				884B3A69189C8DE700CB00A6 /* AFURLResponseSerialization.m in Sources */,
 				881337A8189D14F4002EEA08 /* IdeaNearbyTableViewCell.m in Sources */,
 				881337B5189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.m in Sources */,

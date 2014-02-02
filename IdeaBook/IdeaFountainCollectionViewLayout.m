@@ -80,7 +80,6 @@
             
             
             [_gravityBehavior addItem:attributes];
-           // [_gravityBehaviorNoGravity addItem:attributes];
         }
     }];
 }
@@ -90,8 +89,7 @@
     
     UIAttachmentBehavior *behaviour = [[UIAttachmentBehavior alloc] initWithItem:attributes
                                                                   attachedToAnchor:CGPointMake(CGRectGetMidX(attributes.frame), CGRectGetMidY(attributes.frame))];
-    NSLog(@"%f, %f", attributes.frame.origin.x, attributes.frame.origin.y);
-    
+
     behaviour.length = 0.0f;
     behaviour.damping = 0.8f;
     behaviour.frequency = 1.0f;

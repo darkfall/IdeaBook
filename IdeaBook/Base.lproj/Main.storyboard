@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Agv-Jc-F1B"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yx6-CD-3GG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -31,7 +31,7 @@
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="MoT-R6-ySG" customClass="IdeaFountainViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="ckp-MR-3pc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.98823535442352295" blue="0.9803922176361084" alpha="1" colorSpace="deviceRGB"/>
                         <collectionViewLayout key="collectionViewLayout" id="9Vv-KZ-jlm" customClass="IdeaFountainCollectionViewLayout"/>
@@ -91,18 +91,18 @@
             </objects>
             <point key="canvasLocation" x="1283" y="266"/>
         </scene>
-        <!--Idea View Controller - My Ideas-->
+        <!--Idea View Controller-->
         <scene sceneID="uDk-tt-7ak">
             <objects>
                 <tableViewController id="FbK-QK-EXI" customClass="IdeaViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" id="g3S-0K-5pk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="0.98823535439999999" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ideaCell" rowHeight="52" id="5Yu-AK-VDk" customClass="IdeaTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="52"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Yu-AK-VDk" id="D7y-4k-icH">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
@@ -136,12 +136,11 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Ideas" id="NhN-IH-3CI">
+                    <navigationItem key="navigationItem" id="NhN-IH-3CI">
                         <barButtonItem key="leftBarButtonItem" id="1AM-Pm-RvK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="ZBc-8Y-GsU">
                                 <rect key="frame" x="16" y="12" width="28" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="menu.png"/>
                                 <connections>
                                     <action selector="showSidebar:" destination="FbK-QK-EXI" eventType="touchUpInside" id="sQS-Ml-5r0"/>
                                 </connections>
@@ -149,10 +148,10 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="Bn2-TQ-bne">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W65-kg-bbn">
-                                <rect key="frame" x="257" y="10" width="24" height="24"/>
+                                <rect key="frame" x="280" y="10" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="plus.png">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -167,7 +166,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fj9-6Y-XX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1316" y="927"/>
+            <point key="canvasLocation" x="1283" y="927"/>
         </scene>
         <!--Idea Detail View Controller - My Idea-->
         <scene sceneID="BQ3-ng-Hfa">
@@ -178,11 +177,11 @@
                         <viewControllerLayoutGuide type="bottom" id="F3N-qm-810"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hp9-mD-sCT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rBc-XG-O13">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="288"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="0.989185191346444" blue="0.95530203265425273" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -282,7 +281,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wUZ-I3-Pic"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="STq-dE-805">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocb-k6-vrs">
@@ -349,7 +348,7 @@
             <objects>
                 <tableViewController id="pbx-Fg-qhv" customClass="SidebarViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LF9-Dh-etB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -499,7 +498,7 @@
             <objects>
                 <tableViewController id="Hah-yq-Zne" customClass="IdeaNearbyViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="vVX-Eh-5qq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -556,7 +555,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ZmG-HP-Hq8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3ww-jJ-ese">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -571,7 +570,7 @@
             <objects>
                 <tableViewController id="Y4d-R6-Umk" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QTL-Ya-SPu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -613,7 +612,6 @@
         <image name="comments.png" width="1024" height="1024"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="outbox.png" width="24" height="24"/>
-        <image name="plus.png" width="24" height="24"/>
         <image name="reload" width="24" height="24"/>
         <image name="smile" width="24" height="24"/>
         <image name="smile_sad" width="24" height="24"/>
@@ -623,9 +621,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vfA-qk-Rwk"/>
+        <segue reference="Yxa-tm-OBj"/>
     </inferredMetricsTieBreakers>
 </document>

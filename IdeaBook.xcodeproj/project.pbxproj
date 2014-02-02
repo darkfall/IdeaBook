@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88050D31189E2354005E875E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88050D2F189E2354005E875E /* Default-568h@2x.png */; };
+		88050D34189E24B4005E875E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88050D33189E24B4005E875E /* Default@2x.png */; };
 		88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813377F189CFE7C002EEA08 /* DejalActivityView.m */; };
 		8813378E189D01C8002EEA08 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133784189D01C8002EEA08 /* NZAlertViewColor.m */; };
 		88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */; };
@@ -83,11 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		84385F40189D910400C21742 /* icon1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.PNG; sourceTree = "<group>"; };
-		84385F41189D910400C21742 /* icon2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.PNG; sourceTree = "<group>"; };
-		84385F42189D910400C21742 /* icon3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.PNG; sourceTree = "<group>"; };
-		84385F4B189DAA0D00C21742 /* splash copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash copy.png"; sourceTree = "<group>"; };
-		84385F4D189DAA4D00C21742 /* splash copy 2 960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash copy 2 960.png"; sourceTree = "<group>"; };
+		88050D2F189E2354005E875E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		88050D33189E24B4005E875E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8813377E189CFE7C002EEA08 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
 		8813377F189CFE7C002EEA08 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		88133783189D01C8002EEA08 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
@@ -231,16 +230,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84385F3C189D90BE00C21742 /* images */ = {
+		88050D2E189E2354005E875E /* LaunchImages */ = {
 			isa = PBXGroup;
 			children = (
-				84385F4B189DAA0D00C21742 /* splash copy.png */,
-				84385F4D189DAA4D00C21742 /* splash copy 2 960.png */,
-				84385F41189D910400C21742 /* icon2.PNG */,
-				84385F40189D910400C21742 /* icon1.PNG */,
-				84385F42189D910400C21742 /* icon3.PNG */,
+				88050D33189E24B4005E875E /* Default@2x.png */,
+				88050D2F189E2354005E875E /* Default-568h@2x.png */,
 			);
-			name = images;
+			path = LaunchImages;
 			sourceTree = "<group>";
 		};
 		8813377D189CFE7C002EEA08 /* DejalActivityView */ = {
@@ -433,8 +429,8 @@
 		887C9ADE189B598A008910C8 /* IdeaBook */ = {
 			isa = PBXGroup;
 			children = (
+				88050D2E189E2354005E875E /* LaunchImages */,
 				881337A9189DB711002EEA08 /* Data */,
-				84385F3C189D90BE00C21742 /* images */,
 				88133794189D0331002EEA08 /* UIImage-Helpers */,
 				88133781189D01C8002EEA08 /* NZAlertView */,
 				8813377D189CFE7C002EEA08 /* DejalActivityView */,
@@ -578,6 +574,8 @@
 			files = (
 				889D7730189E130D005DD687 /* Main.storyboard in Resources */,
 				881337AB189DB711002EEA08 /* words.db in Resources */,
+				88050D34189E24B4005E875E /* Default@2x.png in Resources */,
+				88050D31189E2354005E875E /* Default-568h@2x.png in Resources */,
 				88133793189D01C8002EEA08 /* NZAlertView.xib in Resources */,
 				88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */,
 				887C9AF7189B598A008910C8 /* Images.xcassets in Resources */,

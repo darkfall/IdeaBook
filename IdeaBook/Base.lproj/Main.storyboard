@@ -69,7 +69,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Ot1-YI-VUQ">
                                 <rect key="frame" x="16" y="12" width="28" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="menu.png"/>
+                                <state key="normal" image="menu"/>
                                 <connections>
                                     <action selector="showSidebar:" destination="MoT-R6-ySG" eventType="touchUpInside" id="0df-BH-7uE"/>
                                 </connections>
@@ -79,7 +79,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="y2P-6q-q33">
                                 <rect key="frame" x="16" y="12" width="28" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="reload"/>
+                                <state key="normal" image="arrow_circle_right"/>
                                 <connections>
                                     <action selector="reloadClicked:" destination="MoT-R6-ySG" eventType="touchUpInside" id="x97-l8-pXc"/>
                                 </connections>
@@ -203,7 +203,7 @@
                                         <rect key="frame" x="258" y="25" width="42" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" image="speaker.png"/>
+                                        <state key="normal" image="speaker"/>
                                         <connections>
                                             <action selector="shareButtonClicked:" destination="O8y-WW-3bj" eventType="touchUpInside" id="S2P-W3-axH"/>
                                         </connections>
@@ -212,7 +212,8 @@
                                         <rect key="frame" x="139" y="25" width="42" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" image="trash.png"/>
+                                        <state key="normal" image="trash"/>
+                                        <state key="highlighted" image="trash_light"/>
                                         <connections>
                                             <action selector="deleteButtonClicked:" destination="O8y-WW-3bj" eventType="touchUpInside" id="kid-aj-wbN"/>
                                         </connections>
@@ -220,7 +221,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jU4-si-rhW">
                                         <rect key="frame" x="20" y="25" width="42" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="outbox.png"/>
+                                        <state key="normal" image="outbox"/>
+                                        <state key="highlighted" image="outbox_light"/>
                                         <connections>
                                             <action selector="activityButtonClicked:" destination="O8y-WW-3bj" eventType="touchUpInside" id="ay9-2w-53X"/>
                                         </connections>
@@ -554,7 +556,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="vah-KH-K99">
                                 <rect key="frame" x="16" y="12" width="28" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="menu.png"/>
+                                <state key="normal" image="menu"/>
                                 <connections>
                                     <action selector="showSidebar:" destination="Hah-yq-Zne" eventType="touchUpInside" id="sqW-NP-A4z"/>
                                 </connections>
@@ -631,17 +633,20 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_circle_right" width="24" height="24"/>
         <image name="bookmark.png" width="1024" height="1024"/>
         <image name="brightness" width="24" height="24"/>
         <image name="comments.png" width="1024" height="1024"/>
+        <image name="menu" width="24" height="24"/>
         <image name="menu.png" width="28" height="20"/>
-        <image name="outbox.png" width="24" height="24"/>
+        <image name="outbox" width="24" height="24"/>
+        <image name="outbox_light" width="24" height="24"/>
         <image name="plus" width="24" height="24"/>
-        <image name="reload" width="24" height="24"/>
         <image name="smile" width="24" height="24"/>
         <image name="smile_sad" width="24" height="24"/>
-        <image name="speaker.png" width="26" height="24"/>
-        <image name="trash.png" width="24" height="24"/>
+        <image name="speaker" width="26" height="24"/>
+        <image name="trash" width="24" height="24"/>
+        <image name="trash_light" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

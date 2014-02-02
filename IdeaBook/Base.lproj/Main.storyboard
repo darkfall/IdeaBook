@@ -528,7 +528,7 @@
             </objects>
             <point key="canvasLocation" x="171" y="403"/>
         </scene>
-        <!--Idea Nearby View Controller - Discover-->
+        <!--Idea Nearby View Controller - Nearby Ideas!-->
         <scene sceneID="FVF-kG-bO0">
             <objects>
                 <tableViewController id="Hah-yq-Zne" customClass="IdeaNearbyViewController" sceneMemberID="viewController">
@@ -613,7 +613,7 @@
                         </prototypes>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Discover" id="o4R-7N-XSx">
+                    <navigationItem key="navigationItem" title="Nearby Ideas!" id="o4R-7N-XSx">
                         <barButtonItem key="leftBarButtonItem" id="fD1-vi-UBT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="vah-KH-K99">
                                 <rect key="frame" x="16" y="12" width="28" height="20"/>

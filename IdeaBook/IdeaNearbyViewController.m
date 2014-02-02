@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Robert Bu. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
+
 #import "IdeaNearbyViewController.h"
 #import "SWRevealViewController/SWRevealViewController.h"
 
@@ -24,8 +26,11 @@
 
 @interface IdeaNearbyViewController ()
 
-@property (nonatomic, strong) NSMutableArray* nearbyIdeas;
+@property (strong, nonatomic) NSMutableArray* nearbyIdeas;
 @property (strong, nonatomic) IBOutlet UITableView *ideasTableView;
+
+
+@property (strong, nonatomic) AVAudioPlayer* updateSound;
 
 @end
 
@@ -44,6 +49,10 @@
       forControlEvents:UIControlEventValueChanged];
     
     self.refreshControl = refresh;
+    
+    NSURL* updateSoundFile = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"pop" ofType:@"wav"]];
+    _updateSound = [[AVAudioPlayer alloc] initWithContentsOfURL:updateSoundFile error:nil];
+    [_updateSound setVolume:1.0f];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -65,6 +74,8 @@
             bool showAlert = false;
             _nearbyIdeas = [NSMutableArray arrayWithArray:ideas];
             [_ideasTableView reloadData];
+            
+            [_updateSound play];
             
             if(showAlert)
                 [AlertHelper showNZAlert:@"Info"

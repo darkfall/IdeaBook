@@ -12,6 +12,7 @@
 #import "IdeaDetailViewController.h"
 #import "NewIdeaViewController.h"
 #import "IdeaTableViewCell.h"
+
 #import "Models/Idea.h"
 
 #import "ColorScheme.h"

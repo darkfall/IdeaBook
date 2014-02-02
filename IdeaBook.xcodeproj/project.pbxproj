@@ -14,6 +14,8 @@
 		88050D44189EAEA7005E875E /* IdeaNearbyDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D43189EAEA7005E875E /* IdeaNearbyDetailCell.m */; };
 		88050D47189EAEB7005E875E /* IdeaNearbyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D46189EAEB7005E875E /* IdeaNearbyCommentCell.m */; };
 		88050D4B189ED34E005E875E /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D4A189ED34E005E875E /* AddCommentViewController.m */; };
+		88050D51189EFADE005E875E /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 88050D50189EFADE005E875E /* pop.wav */; };
+		88050D53189EFB0F005E875E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88050D52189EFB0F005E875E /* AVFoundation.framework */; };
 		88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813377F189CFE7C002EEA08 /* DejalActivityView.m */; };
 		8813378E189D01C8002EEA08 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133784189D01C8002EEA08 /* NZAlertViewColor.m */; };
 		88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */; };
@@ -102,6 +104,8 @@
 		88050D48189EBC39005E875E /* IdeaNearbyCellCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyCellCommon.h; sourceTree = "<group>"; };
 		88050D49189ED34E005E875E /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
 		88050D4A189ED34E005E875E /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
+		88050D50189EFADE005E875E /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
+		88050D52189EFB0F005E875E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8813377E189CFE7C002EEA08 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
 		8813377F189CFE7C002EEA08 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		88133783189D01C8002EEA08 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88050D53189EFB0F005E875E /* AVFoundation.framework in Frameworks */,
 				884B3A45189C860600CB00A6 /* CoreData.framework in Frameworks */,
 				884B3A43189C860200CB00A6 /* CFNetwork.framework in Frameworks */,
 				884B3A41189C85F800CB00A6 /* CoreLocation.framework in Frameworks */,
@@ -259,6 +264,14 @@
 				88050D3A189E8AF2005E875E /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		88050D4F189EFADE005E875E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				88050D50189EFADE005E875E /* pop.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		8813377D189CFE7C002EEA08 /* DejalActivityView */ = {
@@ -437,6 +450,7 @@
 		887C9AD7189B5989008910C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88050D52189EFB0F005E875E /* AVFoundation.framework */,
 				884B3A44189C860600CB00A6 /* CoreData.framework */,
 				884B3A42189C860200CB00A6 /* CFNetwork.framework */,
 				884B3A40189C85F800CB00A6 /* CoreLocation.framework */,
@@ -451,6 +465,7 @@
 		887C9ADE189B598A008910C8 /* IdeaBook */ = {
 			isa = PBXGroup;
 			children = (
+				88050D4F189EFADE005E875E /* Sounds */,
 				88050D2E189E2354005E875E /* LaunchImages */,
 				881337A9189DB711002EEA08 /* Data */,
 				88050D37189E8AF2005E875E /* Reachability */,
@@ -615,6 +630,7 @@
 				884B3A6B189C8DE700CB00A6 /* LICENSE in Resources */,
 				884B3A6C189C8DE700CB00A6 /* README.md in Resources */,
 				887C9AE3189B598A008910C8 /* InfoPlist.strings in Resources */,
+				88050D51189EFADE005E875E /* pop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

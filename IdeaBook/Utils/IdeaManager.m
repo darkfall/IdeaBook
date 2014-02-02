@@ -97,8 +97,15 @@
 - (void)removeIdea:(Idea*)idea withNotification:(BOOL)withNotification {
     NSUInteger index = [_ideas indexOfObject:idea];
     if(index != NSNotFound) {
-        [_ideas removeObject:idea];
+        if([idea.shared boolValue]) {
+            [ServerAPI removeIdea:idea.uuid success:^{
+                
+            } fail:^{
+                NSLog(@"[IdeaManager] removeAtIndex: unable to remove shared idea from server");
+            }];
+        }
         
+        [_ideas removeObject:idea];
         [self saveDataToDisk];
         
         if(withNotification) {
@@ -111,7 +118,17 @@
 - (void)removeAtIndex:(NSUInteger)index withNotification:(BOOL)withNotification {
     if(_ideas.count > index) {
         Idea* idea = [_ideas objectAtIndex:index];
+        
+        if([idea.shared boolValue]) {
+            [ServerAPI removeIdea:idea.uuid success:^{
+                
+            } fail:^{
+                NSLog(@"[IdeaManager] removeAtIndex: unable to remove shared idea from server");
+            }];
+        }
+        
         [_ideas removeObjectAtIndex:index];
+        
         
         [self saveDataToDisk];
         

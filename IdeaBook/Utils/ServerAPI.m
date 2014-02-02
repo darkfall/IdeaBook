@@ -26,7 +26,7 @@
 #define kGetSharedIdeasUrl      @ kServerBaseUrl "get_shared_ideas"
 #define kShareIdeaUrl           @ kServerBaseUrl "new_idea"
 #define kRemoveIdeaUrl          @ kServerBaseUrl "remove_idea"
-#define kModifyIdeaUrl          @ kServerBaseUrl "modifiy_idea"
+#define kModifyIdeaUrl          @ kServerBaseUrl "modify_idea"
 #define kGetIdeaUrl             @ kServerBaseUrl "get_idea"
 #define kGetCommentsUrl         @ kServerBaseUrl "get_comments"
 #define kLikeIdeaUrl            @ kServerBaseUrl "like_idea"

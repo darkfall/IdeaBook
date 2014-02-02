@@ -18,8 +18,7 @@
 
 @implementation UsersNearbyViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -27,8 +26,7 @@
     _tableItems = @[@"test1", @"test2"];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

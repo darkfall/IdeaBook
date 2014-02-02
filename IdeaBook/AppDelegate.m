@@ -12,12 +12,39 @@
 #import "Utils/IdeaManager.h"
 #import "Utils/ServerAPI.h"
 #import "Utils/UserManager.h"
-
 #import "Utils/AlertHelper.h"
+
+#import "NZAlertView.h"
+
+#import "Reachability/Reachability.h"
+
+
+@interface AppDelegate () {
+    Reachability* _internetReachbility;
+}
+
+@end
+
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (void)testInternet {
+   _internetReachbility = [Reachability reachabilityWithHostname:@"www.google.com"];
+        
+   _internetReachbility.reachableBlock = ^(Reachability*reach) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        });
+    };
+    
+    _internetReachbility.unreachableBlock = ^(Reachability*reach) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [AlertHelper showNZAlert:@"Info" message:@"No Internet connection detected. Some features may not working." style:NZAlertStyleInfo duration:2.0f];
+        });
+    };
+    
+    [_internetReachbility startNotifier];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[GeoLocationManager sharedInstance] startUpdate];
     
     [ServerAPI registerNewUser:[UserManager getCurrentUser] success:^{
@@ -26,28 +53,26 @@
         // failed ? maybe not internet connection ?
         NSLog(@"[ServerAPI] Registration failed");
     }];
+    
+    [self testInternet];
    // [TestServerAPI run];
     return YES;
 }
 
 							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
     
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     [[IdeaManager sharedInstance] saveDataToDisk];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
+- (void)applicationWillEnterForeground:(UIApplication *)application {
     
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
     
 }
 

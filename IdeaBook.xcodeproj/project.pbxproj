@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		88050D31189E2354005E875E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88050D2F189E2354005E875E /* Default-568h@2x.png */; };
 		88050D34189E24B4005E875E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88050D33189E24B4005E875E /* Default@2x.png */; };
+		88050D3D189E8AF2005E875E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D3A189E8AF2005E875E /* Reachability.m */; };
 		88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813377F189CFE7C002EEA08 /* DejalActivityView.m */; };
 		8813378E189D01C8002EEA08 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133784189D01C8002EEA08 /* NZAlertViewColor.m */; };
 		88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */; };
@@ -86,6 +87,8 @@
 /* Begin PBXFileReference section */
 		88050D2F189E2354005E875E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		88050D33189E24B4005E875E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		88050D39189E8AF2005E875E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		88050D3A189E8AF2005E875E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8813377E189CFE7C002EEA08 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
 		8813377F189CFE7C002EEA08 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		88133783189D01C8002EEA08 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
@@ -234,6 +237,15 @@
 				88050D2F189E2354005E875E /* Default-568h@2x.png */,
 			);
 			path = LaunchImages;
+			sourceTree = "<group>";
+		};
+		88050D37189E8AF2005E875E /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				88050D39189E8AF2005E875E /* Reachability.h */,
+				88050D3A189E8AF2005E875E /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		8813377D189CFE7C002EEA08 /* DejalActivityView */ = {
@@ -428,6 +440,7 @@
 			children = (
 				88050D2E189E2354005E875E /* LaunchImages */,
 				881337A9189DB711002EEA08 /* Data */,
+				88050D37189E8AF2005E875E /* Reachability */,
 				88133794189D0331002EEA08 /* UIImage-Helpers */,
 				88133781189D01C8002EEA08 /* NZAlertView */,
 				8813377D189CFE7C002EEA08 /* DejalActivityView */,
@@ -634,6 +647,7 @@
 				884B3A68189C8DE700CB00A6 /* AFURLRequestSerialization.m in Sources */,
 				884B3A62189C8DE700CB00A6 /* AFHTTPRequestOperation.m in Sources */,
 				881337B8189DDEE6002EEA08 /* WordManager.m in Sources */,
+				88050D3D189E8AF2005E875E /* Reachability.m in Sources */,
 				884B3A69189C8DE700CB00A6 /* AFURLResponseSerialization.m in Sources */,
 				881337A8189D14F4002EEA08 /* IdeaNearbyTableViewCell.m in Sources */,
 				881337B5189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.m in Sources */,

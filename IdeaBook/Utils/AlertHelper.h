@@ -12,4 +12,6 @@
 
 + (void)showNZAlert:(NSString*)title message:(NSString*)message style:(NSInteger)style;
 
++ (void)showNZAlert:(NSString*)title message:(NSString*)message style:(NSInteger)style duration:(CGFloat)duration;
+
 @end

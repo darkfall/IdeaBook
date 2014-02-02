@@ -180,7 +180,7 @@
 		884B3A74189C9E3000CB00A6 /* NSUserDefaults+DefaultValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DefaultValue.m"; sourceTree = "<group>"; };
 		884B3A77189CA93700CB00A6 /* TestServerAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestServerAPI.h; sourceTree = "<group>"; };
 		884B3A78189CA93700CB00A6 /* TestServerAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestServerAPI.m; sourceTree = "<group>"; };
-		887C9AD5189B5989008910C8 /* IdeaBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		887C9AD5189B5989008910C8 /* IdeaBookX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaBookX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887C9AD8189B598A008910C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		887C9ADA189B598A008910C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		887C9ADC189B598A008910C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -428,7 +428,7 @@
 		887C9AD6189B5989008910C8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				887C9AD5189B5989008910C8 /* IdeaBook.app */,
+				887C9AD5189B5989008910C8 /* IdeaBookX.app */,
 				887C9AFC189B598A008910C8 /* IdeaBookTests.xctest */,
 			);
 			name = Products;
@@ -529,9 +529,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		887C9AD4189B5989008910C8 /* IdeaBook */ = {
+		887C9AD4189B5989008910C8 /* IdeaBookX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 887C9B0D189B598A008910C8 /* Build configuration list for PBXNativeTarget "IdeaBook" */;
+			buildConfigurationList = 887C9B0D189B598A008910C8 /* Build configuration list for PBXNativeTarget "IdeaBookX" */;
 			buildPhases = (
 				887C9AD1189B5989008910C8 /* Sources */,
 				887C9AD2189B5989008910C8 /* Frameworks */,
@@ -541,9 +541,9 @@
 			);
 			dependencies = (
 			);
-			name = IdeaBook;
+			name = IdeaBookX;
 			productName = IdeaBook;
-			productReference = 887C9AD5189B5989008910C8 /* IdeaBook.app */;
+			productReference = 887C9AD5189B5989008910C8 /* IdeaBookX.app */;
 			productType = "com.apple.product-type.application";
 		};
 		887C9AFB189B598A008910C8 /* IdeaBookTests */ = {
@@ -573,6 +573,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Robert Bu";
 				TargetAttributes = {
+					887C9AD4189B5989008910C8 = {
+						DevelopmentTeam = B978WS847D;
+					};
 					887C9AFB189B598A008910C8 = {
 						TestTargetID = 887C9AD4189B5989008910C8;
 					};
@@ -591,7 +594,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				887C9AD4189B5989008910C8 /* IdeaBook */,
+				887C9AD4189B5989008910C8 /* IdeaBookX */,
 				887C9AFB189B598A008910C8 /* IdeaBookTests */,
 			);
 		};
@@ -694,7 +697,7 @@
 /* Begin PBXTargetDependency section */
 		887C9B02189B598A008910C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 887C9AD4189B5989008910C8 /* IdeaBook */;
+			target = 887C9AD4189B5989008910C8 /* IdeaBookX */;
 			targetProxy = 887C9B01189B598A008910C8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -797,13 +800,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwei Bu (9L4ENBJ447)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IdeaBook/IdeaBook-Prefix.pch";
 				INFOPLIST_FILE = "IdeaBook/IdeaBook-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CEA68111-2C34-4AD0-ADDA-355DD1AAC06C";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -813,13 +817,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwei Bu (9L4ENBJ447)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IdeaBook/IdeaBook-Prefix.pch";
 				INFOPLIST_FILE = "IdeaBook/IdeaBook-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CEA68111-2C34-4AD0-ADDA-355DD1AAC06C";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -879,7 +884,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		887C9B0D189B598A008910C8 /* Build configuration list for PBXNativeTarget "IdeaBook" */ = {
+		887C9B0D189B598A008910C8 /* Build configuration list for PBXNativeTarget "IdeaBookX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				887C9B0E189B598A008910C8 /* Debug */,

@@ -30,5 +30,7 @@
 @property (strong, nonatomic) NSNumber* liked;
 @property (strong, nonatomic) NSNumber* disliked;
 
+@property (strong, nonatomic) NSNumber* numComments;
+
 
 @end

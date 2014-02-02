@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "887C9AD4189B5989008910C8"
                BuildableName = "IdeaBook.app"
-               BlueprintName = "IdeaBook"
+               BlueprintName = "IdeaBookX"
                ReferencedContainer = "container:IdeaBook.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "887C9AD4189B5989008910C8"
             BuildableName = "IdeaBook.app"
-            BlueprintName = "IdeaBook"
+            BlueprintName = "IdeaBookX"
             ReferencedContainer = "container:IdeaBook.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "887C9AD4189B5989008910C8"
             BuildableName = "IdeaBook.app"
-            BlueprintName = "IdeaBook"
+            BlueprintName = "IdeaBookX"
             ReferencedContainer = "container:IdeaBook.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "887C9AD4189B5989008910C8"
             BuildableName = "IdeaBook.app"
-            BlueprintName = "IdeaBook"
+            BlueprintName = "IdeaBookX"
             ReferencedContainer = "container:IdeaBook.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

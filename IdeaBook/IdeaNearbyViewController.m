@@ -68,7 +68,7 @@
             
             if(showAlert)
                 [AlertHelper showNZAlert:@"Info"
-                                 message:[NSString stringWithFormat:@"Found %i ideas nearby you",   [_nearbyIdeas count]]
+                                 message:[NSString stringWithFormat:@"Found %lu ideas nearby you",   (unsigned long)[_nearbyIdeas count]]
                                    style:NZAlertStyleSuccess];
         
         } fail:^{
@@ -125,6 +125,7 @@
     } else {
         cell.dislikeImage.image = [UIImage imageNamed:@"smile_sad"];
     }
+    cell.numCommentsLabel.text = [NSString stringWithFormat:@"%i", [idea.numComments intValue]];
     
     return cell;
 }

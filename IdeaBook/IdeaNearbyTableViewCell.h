@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numDislikesLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *likeImage;
 @property (weak, nonatomic) IBOutlet UIImageView *dislikeImage;
+@property (weak, nonatomic) IBOutlet UILabel *numCommentsLabel;
 
 @property (weak, nonatomic) Idea* idea;
 

@@ -27,7 +27,7 @@
         
         [ServerAPI getSharedIdeas:user success:^(NSArray* ideas) {
             
-            NSLog(@"[TestServerAPI] getSharedIdeas: %d", [ideas count]);
+            NSLog(@"[TestServerAPI] getSharedIdeas: %lu", (unsigned long)[ideas count]);
             
         } fail:^() {
             
@@ -42,7 +42,7 @@
     
     [ServerAPI getIdeasNearby:0 longitude:0 success:^(NSArray* ideas) {
         
-        NSLog(@"[TestServerAPI] getIdeasNearby: %d", [ideas count]);
+        NSLog(@"[TestServerAPI] getIdeasNearby: %lu", (unsigned long)[ideas count]);
         
     } fail:^() {
         
@@ -68,7 +68,7 @@
                     
                     [ServerAPI getComments:idea success:^(NSArray *comments) {
                         
-                        NSLog(@"[TestServerAPI] getComments = %d\n", comments.count);
+                        NSLog(@"[TestServerAPI] getComments = %lu\n", (unsigned long)comments.count);
                         
                         [ServerAPI removeComment:uuid success:^() {
                             NSLog(@"[TestServerAPI] removeComment: success");

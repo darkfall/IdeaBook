@@ -72,7 +72,6 @@
     free(pixelBuffer);
     CFRelease(inBitmapData);
     
-    CGColorSpaceRelease(colorSpace);
     CGImageRelease(imageRef);
     
     return returnImage;

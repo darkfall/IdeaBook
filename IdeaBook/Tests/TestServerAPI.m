@@ -63,16 +63,14 @@
             [ServerAPI dislikeIdea:idea success:^(int numLikes, int numDislikes) {
                 NSLog(@"[TestServerAPI] dislikeIdea: got likes = %d dislikes = %d", numLikes, numDislikes);
                 
-                IdeaComment* comment = [[IdeaComment alloc] init];
-                comment.content = @"test";
-                [ServerAPI addComment:idea fromUser:user comment:comment success:^(NSString* uuid) {
-                    NSLog(@"[TestServerAPI] addComment: got comment uuid = %@", comment.uuid);
+                [ServerAPI addComment:idea comment:@"test" success:^(NSString* uuid) {
+                    NSLog(@"[TestServerAPI] addComment: got comment uuid = %@", uuid);
                     
                     [ServerAPI getComments:idea success:^(NSArray *comments) {
                         
                         NSLog(@"[TestServerAPI] getComments = %d\n", comments.count);
                         
-                        [ServerAPI removeComment:comment success:^() {
+                        [ServerAPI removeComment:uuid success:^() {
                             NSLog(@"[TestServerAPI] removeComment: success");
                             
                             [ServerAPI removeIdea:idea.uuid success:^() {

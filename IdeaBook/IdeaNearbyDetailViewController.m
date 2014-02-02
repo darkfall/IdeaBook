@@ -15,11 +15,13 @@
 #import "Utils/ServerAPI.h"
 #import "Utils/AlertHelper.h"
 #import "Utils/GeoLocationManager.h"
+#import "Utils/UserManager.h"
 
 #import "NZAlertView.h"
 
 #import "IdeaNearbyCommentCell.h"
 #import "IdeaNearbyDetailCell.h"
+#import "AddCommentViewController.h"
 
 #import "ColorScheme.h"
 
@@ -82,6 +84,11 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
     } else {
         _dislikeButton.imageView.image = [UIImage imageNamed:@"smile_sad"];
     }
+
+    [self reloadComments];
+}
+
+- (void)reloadComments {
     
     [_commentLoadingIndicator startAnimating];
     
@@ -91,12 +98,18 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
         [_commentLoadingIndicator stopAnimating];
         
         _comments = comments;
-        
         [_tableView reloadData];
         
     } fail:^{
         [AlertHelper showNZAlert:@"Error" message:@"Failed to get idea comments" style:NZAlertStyleError];
     }];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"showAddComment"]) {
+        AddCommentViewController* addCommentView = (AddCommentViewController*)segue.destinationViewController;
+        addCommentView.idea = _idea;
+    }
 }
 
 #pragma mark - Table view data source
@@ -137,6 +150,13 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
         
         cell.commentDetail.text = comment.content;
         cell.commentorName.text = [@"By " stringByAppendingString: comment.user_name];
+        
+        if(!([comment.user_uuid isEqualToString:[UserManager getCurrentUser].uuid])) {
+            [cell.removeCommentButton removeFromSuperview];
+        }
+        
+        cell.comment = comment;
+        cell.parentViewController = self;
         
         return cell;
     }
@@ -195,7 +215,6 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
         [ServerAPI cancelLikeIdea:_idea success:^(int numLikes, int numDislikes) {
             
             REFRESH_TEXT(numLikes, numDislikes, @"smile", nil);
-            _idea.liked = [NSNumber numberWithInt:0];
             
         } fail:^{
             
@@ -210,8 +229,6 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
         [ServerAPI dislikeIdea:_idea success:^(int numLikes, int numDislikes) {
             
             REFRESH_TEXT(numLikes, numDislikes, @"smile", @"smile_sad_light");
-            _idea.liked = [NSNumber numberWithInt:0];
-            _idea.disliked = [NSNumber numberWithInt:1];
             
         } fail:^{
             
@@ -222,7 +239,6 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
         [ServerAPI cancelDislikeIdea:_idea success:^(int numLikes, int numDislikes) {
             
             REFRESH_TEXT(numLikes, numDislikes, nil, @"smile_sad");
-            _idea.disliked = [NSNumber numberWithInt:0];
             
         } fail:^{
             
@@ -232,8 +248,18 @@ _numDislikesLabel.text = [NSString stringWithFormat:@"%i", numDislikes]; \
     }
 }
 
-- (IBAction)commentClicked:(id)sender {
-    
+- (void)removeComment:(IdeaComment*)comment {
+    if(comment.uuid != nil) {
+        [ServerAPI removeComment:comment.uuid success:^{
+            
+            [self reloadComments];
+            
+        } fail:^{
+            
+            [AlertHelper showNZAlert:@"Error" message:@"Unable to delete comment" style:NZAlertStyleError];
+            
+        }];
+    }
 }
 
 @end

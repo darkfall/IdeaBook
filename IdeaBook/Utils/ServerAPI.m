@@ -51,10 +51,20 @@
 
 #define CALL(x) if(x) x()
 
+#define SERVER_API_START \
+    @try {
+
+#define SERVER_API_END \
+    } \
+    @catch (NSException* exception) { \
+        NSLog(@"[Server API] Exception thrown, reason = %@", [exception reason]); \
+    }
 
 + (void)registerNewUser:(const IdeaUser*)user
                 success:(void (^)(void))success
                    fail:(void (^)(void))fail {
+    SERVER_API_START
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"uuid": user.uuid,
@@ -77,12 +87,16 @@
               CALL(fail);
           }
      ];
+    
+    SERVER_API_END
 }
 
 + (void)getIdeasNearby:(double)latitude
              longitude:(double)longitude
                success:(void (^)(NSArray*))success
                   fail:(void (^)(void))fail {
+    SERVER_API_START
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"latitude": [NSNumber numberWithDouble:latitude],
@@ -116,11 +130,15 @@
               CALL(fail);
           }
      ];
+    
+    SERVER_API_END
 }
 
 + (void)getSharedIdeas:(const IdeaUser*)user
                success:(void (^)(NSArray*))success
                   fail:(void (^)(void))fail {
+    SERVER_API_START
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"uuid": user.uuid};
@@ -148,11 +166,14 @@
              CALL(fail);
          }
      ];
+    
+    SERVER_API_END
 }
 
 + (void)shareIdea:(Idea*)idea
              user:(const IdeaUser*)user
           success:(void (^)(NSString*))success fail:(void (^)(void))fail {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -181,11 +202,13 @@
           }
     ];
     
+    SERVER_API_END
 }
 
 + (void)removeIdea:(const NSString*)uuid
            success:(void (^)(void))success
               fail:(void (^)(void))fail {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -208,11 +231,13 @@
           }
      ];
     
+    SERVER_API_END
 }
 
 + (void)modifyIdea:(const Idea*)idea
            success:(void (^)(void))success
               fail:(void (^)(void))fail {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -237,11 +262,13 @@
           }
      ];
 
+    SERVER_API_END
 }
 
 + (void)getIdea:(const NSString*)uuid
         success:(void (^)(Idea*))success
            fail:(void (^)(void))fail {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -267,11 +294,13 @@
          }
      ];
     
+    SERVER_API_END
 }
 
 + (void)getComments:(const Idea*)idea
             success:(void (^)(NSArray*))success
                fail:(void (^)(void))fail {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -300,12 +329,14 @@
          }
      ];
     
+    SERVER_API_END
 }
 
 + (void)likeIdea:(Idea*)idea
          success:(void (^)(int, int))success
             fail:(void (^)(void))fail
              any:(void (^)(void))any {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -335,12 +366,15 @@
               CALL(any);
           }
      ];
+    
+    SERVER_API_END
 }
 
 + (void)dislikeIdea:(const Idea*)idea
             success:(void (^)(int, int))success
                fail:(void (^)(void))fail
                 any:(void (^)(void))any {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -372,12 +406,16 @@
               CALL(any);
           }
      ];
+    
+    SERVER_API_END
 }
 
 + (void)cancelLikeIdea:(Idea*)idea
                success:(void (^)(int, int))success
                   fail:(void (^)(void))fail
                    any:(void (^)(void))any {
+    SERVER_API_START
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"idea_uuid": idea.uuid,
@@ -406,12 +444,14 @@
           }
      ];
 
+    SERVER_API_END
 }
 
 + (void)cancelDislikeIdea:(Idea*)idea
                   success:(void (^)(int, int))success
                      fail:(void (^)(void))fail
                       any:(void (^)(void))any {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -441,26 +481,27 @@
           }
      ];
     
+    SERVER_API_END
 }
 
 + (void)addComment:(const Idea*)idea
-          fromUser:(const IdeaUser*)fromUser
-           comment:(IdeaComment*)comment
+           comment:(NSString*)comment
            success:(void (^)(NSString*))success
               fail:(void (^)(void))fail {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"idea_uuid": idea.uuid,
-                                 @"user_uuid": fromUser.uuid,
-                                 @"content": comment.content};
+                                 @"user_uuid": [UserManager getCurrentUser].uuid,
+                                 @"content": comment};
     
     [manager POST:kAddCommentUrl
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  comment.uuid = responseObject[@"data"];
-                  success(comment.uuid);
+                  if(success)
+                      success(responseObject[@"data"]);
               } else {
                   NSLog(@"[ServerAPI] addComment error: %@", responseObject[@"error"]);
                   CALL(fail);
@@ -471,15 +512,18 @@
               CALL(fail);
           }
      ];
+    
+    SERVER_API_END
 }
 
-+ (void)removeComment:(const IdeaComment*)comment
++ (void)removeComment:(const NSString*)uuid
               success:(void (^)(void))success
                  fail:(void (^)(void))fail {
+    SERVER_API_START
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSDictionary *parameters = @{@"uuid": comment.uuid};
+    NSDictionary *parameters = @{@"uuid": uuid};
     
     [manager POST:kRemoveCommentUrl
        parameters:parameters
@@ -496,6 +540,8 @@
               CALL(fail);
           }
      ];
+    
+    SERVER_API_END
 }
 
 @end

@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class Idea;
+@class IdeaComment;
 
 @interface IdeaNearbyDetailViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) Idea* idea;
+
+- (void)removeComment:(IdeaComment*)comment;
 
 @end

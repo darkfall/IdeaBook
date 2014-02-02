@@ -13,6 +13,7 @@
 		88050D41189EAE10005E875E /* IdeaNearbyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D40189EAE10005E875E /* IdeaNearbyDetailViewController.m */; };
 		88050D44189EAEA7005E875E /* IdeaNearbyDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D43189EAEA7005E875E /* IdeaNearbyDetailCell.m */; };
 		88050D47189EAEB7005E875E /* IdeaNearbyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D46189EAEB7005E875E /* IdeaNearbyCommentCell.m */; };
+		88050D4B189ED34E005E875E /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D4A189ED34E005E875E /* AddCommentViewController.m */; };
 		88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813377F189CFE7C002EEA08 /* DejalActivityView.m */; };
 		8813378E189D01C8002EEA08 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133784189D01C8002EEA08 /* NZAlertViewColor.m */; };
 		88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */; };
@@ -99,6 +100,8 @@
 		88050D45189EAEB7005E875E /* IdeaNearbyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyCommentCell.h; sourceTree = "<group>"; };
 		88050D46189EAEB7005E875E /* IdeaNearbyCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaNearbyCommentCell.m; sourceTree = "<group>"; };
 		88050D48189EBC39005E875E /* IdeaNearbyCellCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyCellCommon.h; sourceTree = "<group>"; };
+		88050D49189ED34E005E875E /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
+		88050D4A189ED34E005E875E /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		8813377E189CFE7C002EEA08 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
 		8813377F189CFE7C002EEA08 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		88133783189D01C8002EEA08 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
@@ -482,6 +485,8 @@
 				88050D43189EAEA7005E875E /* IdeaNearbyDetailCell.m */,
 				88050D45189EAEB7005E875E /* IdeaNearbyCommentCell.h */,
 				88050D46189EAEB7005E875E /* IdeaNearbyCommentCell.m */,
+				88050D49189ED34E005E875E /* AddCommentViewController.h */,
+				88050D4A189ED34E005E875E /* AddCommentViewController.m */,
 				887C9B13189B5AFA008910C8 /* UsersNearbyViewController.h */,
 				887C9B14189B5AFA008910C8 /* UsersNearbyViewController.m */,
 				887C9B16189B5D51008910C8 /* SettingsViewController.h */,
@@ -630,6 +635,7 @@
 				884B3A67189C8DE700CB00A6 /* AFURLConnectionOperation.m in Sources */,
 				887C9B1C189B5EDE008910C8 /* SWRevealViewController.m in Sources */,
 				884B3A64189C8DE700CB00A6 /* AFHTTPSessionManager.m in Sources */,
+				88050D4B189ED34E005E875E /* AddCommentViewController.m in Sources */,
 				884B3A65189C8DE700CB00A6 /* AFNetworkReachabilityManager.m in Sources */,
 				881337A0189D0331002EEA08 /* UIImage+Blur.m in Sources */,
 				887C9AF5189B598A008910C8 /* IdeaNearbyViewController.m in Sources */,

@@ -36,14 +36,16 @@ static IdeaUser* user = nil;
         [[NSUserDefaults standardUserDefaults] setValue:uuid forKey:kUserUUIDKey];
     }
     
-    user = [[IdeaUser alloc] init];
-    user.uuid = uuid;
-    
-    user.name = [defaults stringForKey:kUserNameKey defaultValue:@"Anonymous"];
-    user.avatarPath = [defaults stringForKey:kUserAvatarPathKey defaultValue:@""];
-    
-    user.longitude = [NSNumber numberWithDouble:[defaults doubleForKey:kUserLongitudeKey]];
-    user.latitude = [NSNumber numberWithDouble:[defaults doubleForKey:kUserLatitudeKey]];
+    if(user == nil) {
+        user = [[IdeaUser alloc] init];
+        user.uuid = uuid;
+        
+        user.name = [defaults stringForKey:kUserNameKey defaultValue:@"Anonymous"];
+        user.avatarPath = [defaults stringForKey:kUserAvatarPathKey defaultValue:@""];
+        
+        user.longitude = [NSNumber numberWithDouble:[defaults doubleForKey:kUserLongitudeKey]];
+        user.latitude = [NSNumber numberWithDouble:[defaults doubleForKey:kUserLatitudeKey]];
+    }
     
     return user;
 }

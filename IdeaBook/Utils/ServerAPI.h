@@ -75,12 +75,11 @@
 
 
 + (void)addComment:(const Idea*)idea
-          fromUser:(const IdeaUser*)fromUser
-           comment:(IdeaComment*)comment
+           comment:(const NSString*)comment
            success:(void (^)(NSString*))success
               fail:(void (^)(void))fail;
 
-+ (void)removeComment:(const IdeaComment*)comment
++ (void)removeComment:(const NSString*)uuid
               success:(void (^)(void))success
                  fail:(void (^)(void))fail;
 

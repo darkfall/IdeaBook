@@ -8,6 +8,7 @@
 
 #import "IdeaNearbyCommentCell.h"
 #import "IdeaNearbyCellCommon.h"
+#import "IdeaNearbyDetailViewController.h"
 
 @implementation IdeaNearbyCommentCell
 
@@ -27,6 +28,11 @@
 
 - (void)setFrame:(CGRect)frame {
     SET_UP_CELL
+}
+
+- (IBAction)removeCommentClicked:(id)sender {
+    IdeaNearbyDetailViewController* parent = (IdeaNearbyDetailViewController*)_parentViewController;
+    [parent removeComment:_comment];
 }
 
 @end

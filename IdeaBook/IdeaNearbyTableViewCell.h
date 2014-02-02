@@ -17,8 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLikesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numDislikesLabel;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet UIButton *dislikeButton;
+@property (weak, nonatomic) IBOutlet UIImageView *likeImage;
+@property (weak, nonatomic) IBOutlet UIImageView *dislikeImage;
 
 @property (weak, nonatomic) Idea* idea;
 

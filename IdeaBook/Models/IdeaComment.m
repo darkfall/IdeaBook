@@ -12,10 +12,7 @@
 
 - (id)init {
     if(self = [super init]) {
-        _user = nil;
-        _idea = nil;
-        
-        _content = _uuid = @"";
+        _content = _uuid = _user_name = _user_uuid = @"";
     }
     return self;
 }

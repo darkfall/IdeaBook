@@ -1,24 +1,15 @@
 //
-//  NearbyIdeaTableViewCell.m
+//  IdeaNearbyDetailCell.m
 //  IdeaBook
 //
-//  Created by Robert Bu on 2/1/14.
+//  Created by Robert Bu on 2/2/14.
 //  Copyright (c) 2014 Robert Bu. All rights reserved.
 //
 
-#import "IdeaNearbyTableViewCell.h"
+#import "IdeaNearbyDetailCell.h"
+#import "IdeaNearbyCellCommon.h"
 
-#import "Models/Idea.h"
-#import "Utils/ServerAPI.h"
-#import "Utils/AlertHelper.h"
-
-#import "NZAlertView.h"
-
-@interface IdeaNearbyTableViewCell ()
-
-@end
-
-@implementation IdeaNearbyTableViewCell
+@implementation IdeaNearbyDetailCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -30,7 +21,10 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
+- (void)setFrame:(CGRect)frame {
+    SET_UP_CELL
 }
 
 @end

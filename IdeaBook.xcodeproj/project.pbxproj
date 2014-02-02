@@ -10,6 +10,9 @@
 		88050D31189E2354005E875E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88050D2F189E2354005E875E /* Default-568h@2x.png */; };
 		88050D34189E24B4005E875E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88050D33189E24B4005E875E /* Default@2x.png */; };
 		88050D3D189E8AF2005E875E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D3A189E8AF2005E875E /* Reachability.m */; };
+		88050D41189EAE10005E875E /* IdeaNearbyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D40189EAE10005E875E /* IdeaNearbyDetailViewController.m */; };
+		88050D44189EAEA7005E875E /* IdeaNearbyDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D43189EAEA7005E875E /* IdeaNearbyDetailCell.m */; };
+		88050D47189EAEB7005E875E /* IdeaNearbyCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88050D46189EAEB7005E875E /* IdeaNearbyCommentCell.m */; };
 		88133780189CFE7C002EEA08 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8813377F189CFE7C002EEA08 /* DejalActivityView.m */; };
 		8813378E189D01C8002EEA08 /* NZAlertViewColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88133784189D01C8002EEA08 /* NZAlertViewColor.m */; };
 		88133790189D01C8002EEA08 /* NZAlertView-Icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 88133786189D01C8002EEA08 /* NZAlertView-Icons.bundle */; };
@@ -89,6 +92,13 @@
 		88050D33189E24B4005E875E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		88050D39189E8AF2005E875E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		88050D3A189E8AF2005E875E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		88050D3F189EAE10005E875E /* IdeaNearbyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyDetailViewController.h; sourceTree = "<group>"; };
+		88050D40189EAE10005E875E /* IdeaNearbyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaNearbyDetailViewController.m; sourceTree = "<group>"; };
+		88050D42189EAEA7005E875E /* IdeaNearbyDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyDetailCell.h; sourceTree = "<group>"; };
+		88050D43189EAEA7005E875E /* IdeaNearbyDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaNearbyDetailCell.m; sourceTree = "<group>"; };
+		88050D45189EAEB7005E875E /* IdeaNearbyCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyCommentCell.h; sourceTree = "<group>"; };
+		88050D46189EAEB7005E875E /* IdeaNearbyCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdeaNearbyCommentCell.m; sourceTree = "<group>"; };
+		88050D48189EBC39005E875E /* IdeaNearbyCellCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdeaNearbyCellCommon.h; sourceTree = "<group>"; };
 		8813377E189CFE7C002EEA08 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
 		8813377F189CFE7C002EEA08 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		88133783189D01C8002EEA08 /* NZAlertViewColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NZAlertViewColor.h; sourceTree = "<group>"; };
@@ -465,6 +475,13 @@
 				887C9AF4189B598A008910C8 /* IdeaNearbyViewController.m */,
 				881337A6189D14F4002EEA08 /* IdeaNearbyTableViewCell.h */,
 				881337A7189D14F4002EEA08 /* IdeaNearbyTableViewCell.m */,
+				88050D3F189EAE10005E875E /* IdeaNearbyDetailViewController.h */,
+				88050D40189EAE10005E875E /* IdeaNearbyDetailViewController.m */,
+				88050D48189EBC39005E875E /* IdeaNearbyCellCommon.h */,
+				88050D42189EAEA7005E875E /* IdeaNearbyDetailCell.h */,
+				88050D43189EAEA7005E875E /* IdeaNearbyDetailCell.m */,
+				88050D45189EAEB7005E875E /* IdeaNearbyCommentCell.h */,
+				88050D46189EAEB7005E875E /* IdeaNearbyCommentCell.m */,
 				887C9B13189B5AFA008910C8 /* UsersNearbyViewController.h */,
 				887C9B14189B5AFA008910C8 /* UsersNearbyViewController.m */,
 				887C9B16189B5D51008910C8 /* SettingsViewController.h */,
@@ -631,8 +648,10 @@
 				884B3A63189C8DE700CB00A6 /* AFHTTPRequestOperationManager.m in Sources */,
 				884B3A6F189C932C00CB00A6 /* JSONSerialization.m in Sources */,
 				887C9AF2189B598A008910C8 /* IdeaViewController.m in Sources */,
+				88050D44189EAEA7005E875E /* IdeaNearbyDetailCell.m in Sources */,
 				881337A2189D0331002EEA08 /* UIImage+Screenshot.m in Sources */,
 				881337A5189D139F002EEA08 /* AlertHelper.m in Sources */,
+				88050D41189EAE10005E875E /* IdeaNearbyDetailViewController.m in Sources */,
 				884B3A3B189C841000CB00A6 /* IdeaUser.m in Sources */,
 				887C9AE5189B598A008910C8 /* main.m in Sources */,
 				88FF785A189CDD4D004366FA /* IdeaManager.m in Sources */,
@@ -648,6 +667,7 @@
 				884B3A62189C8DE700CB00A6 /* AFHTTPRequestOperation.m in Sources */,
 				881337B8189DDEE6002EEA08 /* WordManager.m in Sources */,
 				88050D3D189E8AF2005E875E /* Reachability.m in Sources */,
+				88050D47189EAEB7005E875E /* IdeaNearbyCommentCell.m in Sources */,
 				884B3A69189C8DE700CB00A6 /* AFURLResponseSerialization.m in Sources */,
 				881337A8189D14F4002EEA08 /* IdeaNearbyTableViewCell.m in Sources */,
 				881337B5189DC6C9002EEA08 /* IdeaFountainCollectionViewLayout.m in Sources */,

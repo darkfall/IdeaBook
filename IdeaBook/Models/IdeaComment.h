@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSString* content;
 @property (strong, nonatomic) NSString* uuid;
 
-@property (weak, nonatomic) IdeaUser*   user;
-@property (weak, nonatomic) Idea*       idea;
+@property (strong, nonatomic) NSString* user_name;
+@property (strong, nonatomic) NSString* user_uuid;
 
 @end

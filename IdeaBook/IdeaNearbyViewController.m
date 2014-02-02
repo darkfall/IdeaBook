@@ -18,6 +18,7 @@
 #import "NZAlertView/NZAlertView.h"
 
 #import "IdeaNearbyTableViewCell.h"
+#import "IdeaNearbyDetailViewController.h"
 
 #define kMaxIdeaTitleLength 30
 
@@ -119,18 +120,27 @@
     }
     
     if([idea.liked intValue] > 0) {
-        cell.likeButton.imageView.image = [UIImage imageNamed:@"smile_light"];
+        cell.likeImage.image = [UIImage imageNamed:@"smile_light"];
     } else {
-        cell.likeButton.imageView.image = [UIImage imageNamed:@"smile"];
+        cell.likeImage.image = [UIImage imageNamed:@"smile"];
     }
     
     if([idea.disliked intValue] > 0) {
-        cell.dislikeButton.imageView.image = [UIImage imageNamed:@"smile_light"];
+        cell.dislikeImage.image = [UIImage imageNamed:@"smile_sad_light"];
     } else {
-        cell.dislikeButton.imageView.image = [UIImage imageNamed:@"smile"];
+        cell.dislikeImage.image = [UIImage imageNamed:@"smile_sad"];
     }
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"showIdeaDetail"]) {
+        IdeaNearbyDetailViewController* detailController = (IdeaNearbyDetailViewController*)segue.destinationViewController;
+        
+        NSIndexPath* selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        detailController.idea = [_nearbyIdeas objectAtIndex:selectedRowIndex.row];
+    }
 }
 
 

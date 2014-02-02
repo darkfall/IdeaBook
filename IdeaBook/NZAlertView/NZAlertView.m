@@ -269,9 +269,7 @@ static BOOL IsPresenting;
 
 - (CGRect)frameForLabel:(UILabel *)label
 {
-    CGFloat height = [label.text sizeWithFont:label.font
-                            constrainedToSize:CGSizeMake(CGRectGetWidth(label.frame), 9999)
-                                lineBreakMode:NSLineBreakByTruncatingTail].height;
+    CGFloat height = [label.text sizeWithAttributes:@{NSFontAttributeName:label.font}].height;
     
     CGRect frame = label.frame;
     frame.size.height = height;

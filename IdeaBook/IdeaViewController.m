@@ -75,7 +75,7 @@
     if([segue.identifier isEqualToString:@"showIdeaDetail"]) {
         IdeaDetailViewController* ideaController = segue.destinationViewController;
         
-        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        NSIndexPath* selectedRowIndex = [self.tableView indexPathForSelectedRow];
         NSMutableArray* ideas = [[IdeaManager sharedInstance] ideas];
         Idea* idea = [ideas objectAtIndex:selectedRowIndex.row];
         

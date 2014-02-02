@@ -97,17 +97,16 @@
 }
 
 - (void)ideaRemoved:(Idea *)idea index:(NSUInteger)index {
-    
     [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
 }
 
 - (void)ideaAdded:(Idea *)idea index:(NSUInteger)index {
     [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
-                     withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
 }
 

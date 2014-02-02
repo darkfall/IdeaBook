@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IdeaFountainViewController : UIViewController
+@interface IdeaFountainViewController : UICollectionViewController
 
 @end

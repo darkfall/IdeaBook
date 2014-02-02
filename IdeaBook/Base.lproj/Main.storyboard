@@ -31,29 +31,55 @@
         <scene sceneID="QPa-bu-2Bz">
             <objects>
                 <viewController id="7vI-tU-YhF" customClass="IdeaFountainViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wU1-hy-zaQ"/>
-                        <viewControllerLayoutGuide type="bottom" id="RE9-JL-ZLu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AE6-fZ-lL7">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="pdy-Mh-Mbz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.98781132930000004" blue="0.97942006179999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewLayout key="collectionViewLayout" id="RXy-2V-uwJ" customClass="IdeaFountainCollectionViewLayout"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wordCell" id="ZN9-p6-ROI">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="1" green="0.30596139589999999" blue="0.1879201995" alpha="1" colorSpace="calibratedRGB"/>
+                            </collectionViewCell>
+                        </cells>
+                    </collectionView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Idea Fountain" id="wVk-1O-Xgh">
-                        <barButtonItem key="leftBarButtonItem" id="4Dy-nB-ECJ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="XbL-yI-i7Z">
+                        <barButtonItem key="leftBarButtonItem" id="lmu-qX-eTw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="L4u-HT-0ie">
                                 <rect key="frame" x="16" y="11" width="28" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="menu.png">
                                     <attributedString key="attributedTitle"/>
                                 </state>
                                 <connections>
-                                    <action selector="showSidebar:" destination="7vI-tU-YhF" eventType="touchUpInside" id="gsy-Af-91G"/>
+                                    <action selector="showSidebar:" destination="7vI-tU-YhF" eventType="touchUpInside" id="SYZ-Q9-dw4"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="6LS-yt-wdT">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="igv-cK-hvJ">
+                                <rect key="frame" x="16" y="11" width="28" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="reload">
+                                    <attributedString key="attributedTitle"/>
+                                </state>
+                                <connections>
+                                    <action selector="reloadClicked:" destination="7vI-tU-YhF" eventType="touchUpInside" id="arF-ji-tnC"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="pdy-Mh-Mbz" id="uZd-ye-uiO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fw2-2y-Y7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -604,6 +630,7 @@
         <image name="menu.png" width="28" height="20"/>
         <image name="outbox.png" width="24" height="24"/>
         <image name="plus.png" width="24" height="24"/>
+        <image name="reload" width="24" height="24"/>
         <image name="smile" width="24" height="24"/>
         <image name="smile_sad" width="24" height="24"/>
         <image name="speaker.png" width="26" height="24"/>

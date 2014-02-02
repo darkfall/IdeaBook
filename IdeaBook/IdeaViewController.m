@@ -14,6 +14,8 @@
 #import "IdeaTableViewCell.h"
 #import "Models/Idea.h"
 
+#import "ColorScheme.h"
+
 #define kMaxIdeaTitleLength 20
 
 @interface IdeaViewController ()
@@ -29,6 +31,9 @@
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [IdeaManager sharedInstance].delegate = self;
+    
+    self.navigationController.navigationBar.barTintColor = kCellHighlightColor;
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
 }
 
 - (void)didReceiveMemoryWarning {

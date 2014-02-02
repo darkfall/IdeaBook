@@ -47,9 +47,6 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
-    self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
-    [self.refreshControl beginRefreshing];
-    [self refreshNearbyIdeas:nil];
 }
 
 - (void)refreshNearbyIdeas: (id) sender {

@@ -14,8 +14,7 @@
 #import "SettingsViewController.h"
 #import "IdeaViewController.h"
 
-#define kCellHighlightColor [UIColor colorWithRed:(226/255.0) green:(148/255.0) blue:(59/255.0) alpha:1]
-#define kCellBackgroundColor [UIColor colorWithWhite:0.1f alpha:1.0f]
+#import "ColorScheme.h"
 
 @interface SidebarViewController ()
 

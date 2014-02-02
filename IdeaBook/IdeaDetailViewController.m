@@ -47,11 +47,10 @@
         
         [self updateDistance];
         if([_idea.shared boolValue]) {
-            
-            _shareButton.imageView.image = [UIImage imageNamed:@"speaker_light.png"];
+            _shareButton.imageView.image = [UIImage imageNamed:@"brightness_light"];
             
         } else {
-            _shareButton.imageView.image = [UIImage imageNamed:@"speaker.png"];
+            _shareButton.imageView.image = [UIImage imageNamed:@"brightness"];
         }
     }
     
@@ -114,12 +113,12 @@
     
     [[IdeaManager sharedInstance] shareOrCancelShareIdea:_idea onView:self.view withNotification:YES onShared:^{
         
-        _shareButton.imageView.image = [UIImage imageNamed:@"speaker_light.png"];
+        _shareButton.imageView.image = [UIImage imageNamed:@"brightness_light"];
         [self updateDistance];
         
     } onCancelled:^{
         
-        _shareButton.imageView.image = [UIImage imageNamed:@"speaker.png"];
+        _shareButton.imageView.image = [UIImage imageNamed:@"brightness"];
         [self updateDistance];
         
     }];

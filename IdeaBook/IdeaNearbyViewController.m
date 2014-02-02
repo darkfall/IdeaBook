@@ -59,13 +59,16 @@
         [ServerAPI getIdeasNearby:lastLoc.coordinate.longitude longitude:lastLoc.coordinate.longitude success:^(NSArray* ideas) {
             
             [self.refreshControl endRefreshing];
-            
+        
+           // bool showAlert = _nearbyIdeas == nil || _nearbyIdeas.count == 0;
+            bool showAlert = false;
             _nearbyIdeas = [NSMutableArray arrayWithArray:ideas];
             [_ideasTableView reloadData];
             
-            [AlertHelper showNZAlert:@"Info"
-                             message:[NSString stringWithFormat:@"Found %i ideas nearby you", [_nearbyIdeas count]]
-                               style:NZAlertStyleSuccess];
+            if(showAlert)
+                [AlertHelper showNZAlert:@"Info"
+                                 message:[NSString stringWithFormat:@"Found %i ideas nearby you",   [_nearbyIdeas count]]
+                                   style:NZAlertStyleSuccess];
         
         } fail:^{
             

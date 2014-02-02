@@ -99,7 +99,7 @@
     }
     _prevSelectedCell = currentCell;
     
-    if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
+    if ([segue isKindOfClass: [SWRevealViewControllerSegue class]]) {
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
         
         swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {

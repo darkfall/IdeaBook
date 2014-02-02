@@ -33,7 +33,7 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="ckp-MR-3pc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.98823535442352295" blue="0.9803922176361084" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="1" green="0.98823535439999999" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
                         <collectionViewLayout key="collectionViewLayout" id="9Vv-KZ-jlm" customClass="IdeaFountainCollectionViewLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wordCell" id="XGr-CY-bKG" customClass="IdeaFountainViewCell">
@@ -79,7 +79,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="y2P-6q-q33">
                                 <rect key="frame" x="16" y="12" width="28" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="arrow_circle_right"/>
+                                <state key="normal" image="arrow_circle_right_white"/>
                                 <connections>
                                     <action selector="reloadClicked:" destination="MoT-R6-ySG" eventType="touchUpInside" id="x97-l8-pXc"/>
                                 </connections>
@@ -731,7 +731,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow_circle_right" width="24" height="24"/>
+        <image name="arrow_circle_right_white" width="24" height="24"/>
         <image name="bookmark.png" width="1024" height="1024"/>
         <image name="brightness" width="24" height="24"/>
         <image name="comment" width="24" height="24"/>

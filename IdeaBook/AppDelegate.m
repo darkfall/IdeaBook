@@ -10,12 +10,22 @@
 
 #import "Tests/TestServerAPI.h"
 #import "Utils/IdeaManager.h"
+#import "Utils/ServerAPI.h"
+#import "Utils/UserManager.h"
 
+#import "Utils/AlertHelper.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[GeoLocationManager sharedInstance] startUpdate];
+    
+    [ServerAPI registerNewUser:[UserManager getCurrentUser] success:^{
+        NSLog(@"[ServerAPI] Registration succeed");
+    } fail:^{
+        // failed ? maybe not internet connection ?
+        NSLog(@"[ServerAPI] Registration failed");
+    }];
    // [TestServerAPI run];
     return YES;
 }

@@ -9,10 +9,13 @@
 #import "NewIdeaViewController.h"
 #import "Utils/IdeaManager.h"
 
+#import "ColorScheme.h"
+
 @interface NewIdeaViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *ideaContentTextView;
 @property (strong, nonatomic) NSString* ideaContent;
+@property (weak, nonatomic) IBOutlet UIView *titleView;
 
 @end
 
@@ -23,10 +26,14 @@
     
     _ideaContentTextView.delegate = self;
     [_ideaContentTextView becomeFirstResponder];
+    
+    [_titleView setBackgroundColor:kCellHighlightColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     _ideaContentTextView.text = _ideaContent;
+    
+    [_titleView setBackgroundColor:kCellHighlightColor];
 }
 
 - (void)didReceiveMemoryWarning {

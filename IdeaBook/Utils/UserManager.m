@@ -8,7 +8,6 @@
 
 #import "UserManager.h"
 #import "NSUserDefaults+DefaultValue.h"
-
 #import "../Models/IdeaUser.h"
 
 #define kUserUUIDKey @"UserUUID"

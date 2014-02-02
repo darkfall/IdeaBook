@@ -9,7 +9,7 @@
 #import "IdeaFountainCollectionViewLayout.h"
 
 #define kCellItemWidth 240
-#define kCellItemHeight 40
+#define kCellItemHeight 64
 
 @interface IdeaFountainCollectionViewLayout () {
     

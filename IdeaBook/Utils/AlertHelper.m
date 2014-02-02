@@ -18,7 +18,7 @@
                                                     message:message
                                                    delegate:nil];
     
-    [alert setAlertDuration:1.5f];
+    [alert setAlertDuration:1.0f];
     [alert setBlurParameter:0.1f];
     [alert setTextAlignment:NSTextAlignmentCenter];
     

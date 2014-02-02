@@ -10,7 +10,7 @@
 
 @class Idea;
 
-@interface IdeaDetailViewController : UIViewController
+@interface IdeaDetailViewController : UIViewController<UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *ideaContent;
 

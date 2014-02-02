@@ -10,6 +10,15 @@
 
 #import "../Models/Idea.h"
 
+
+#import "UserManager.h"
+#import "ServerAPI.h"
+#import "GeoLocationManager.h"
+#import "AlertHelper.h"
+
+#import "DejalActivityView.h"
+#import "NZAlertView.h"
+
 // local idea manager
 @implementation IdeaManager
 
@@ -54,7 +63,7 @@
     
     if(withNotification) {
         if(_delegate)
-            [_delegate ideaRemoved:idea];
+            [_delegate ideaChanged:idea index:[_ideas indexOfObject:idea]];
     }
 }
 
@@ -71,21 +80,22 @@
     [_ideas addObject:idea];
     if(withNotification) {
         if(_delegate)
-            [_delegate ideaAdded:idea];
+            [_delegate ideaAdded:idea index:_ideas.count - 1];
     }
     
     [self saveDataToDisk];
 }
 
 - (void)removeIdea:(Idea*)idea withNotification:(BOOL)withNotification {
-    if([_ideas containsObject:idea]) {
+    NSUInteger index = [_ideas indexOfObject:idea];
+    if(index != NSNotFound) {
         [_ideas removeObject:idea];
         
         [self saveDataToDisk];
         
         if(withNotification) {
             if(_delegate)
-                [_delegate ideaRemoved:idea];
+                [_delegate ideaRemoved:idea index:index];
         }
     }
 }
@@ -99,9 +109,57 @@
         
         if(withNotification) {
             if(_delegate)
-                [_delegate ideaRemoved:idea];
+                [_delegate ideaRemoved:idea index:index];
         }
     }
+}
+
+- (void)shareOrCancelShareIdea:(Idea*)idea onView:(UIView*)view withNotification:(BOOL)notification onShared:(void (^)(void))onShared onCancelled:(void (^)(void))onCancelled {
+    
+    [DejalBezelActivityView activityViewForView:view];
+    
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        if(![idea.shared boolValue]) {
+            [ServerAPI shareIdea:idea user:[UserManager getCurrentUser] success:^(NSString* uuid) {
+                [DejalActivityView removeView];
+                
+                [self ideaChanged:idea withNotification:YES];
+                if(onShared)
+                    onShared();
+                
+                if(notification)
+                    [AlertHelper showNZAlert:@"Info" message:@"Idea shared" style:NZAlertStyleSuccess];
+                
+            } fail:^{
+                [DejalActivityView removeView];
+                
+                [AlertHelper showNZAlert:@"Error" message:@"Share idea failed" style:NZAlertStyleError];
+            }];
+            
+        } else {
+            
+            assert(idea.uuid != nil && idea.uuid.length > 0);
+            
+            [ServerAPI removeIdea:idea.uuid success:^{
+                
+                [DejalActivityView removeView];
+                idea.shared = [NSNumber numberWithBool:NO];
+                [self ideaChanged:idea withNotification:YES];
+                if(onCancelled)
+                    onCancelled();
+                                
+            } fail:^{
+                
+                [DejalActivityView removeView];
+                idea.shared = [NSNumber numberWithBool:NO];
+                [AlertHelper showNZAlert:@"Error" message:@"Cancel idea share failed" style:NZAlertStyleError];
+                
+            }];
+        }
+    });
 }
 
 @end

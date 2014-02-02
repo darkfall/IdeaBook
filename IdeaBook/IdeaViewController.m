@@ -44,6 +44,10 @@
     return [[[IdeaManager sharedInstance] ideas] count];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     IdeaTableViewCell *cell = (IdeaTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ideaCell" forIndexPath:indexPath];
@@ -51,10 +55,13 @@
     
     Idea* idea = [ideas objectAtIndex:indexPath.row];
     if([idea.shared boolValue]) {
-        cell.ideaSharedIcon.image = [UIImage imageNamed:@"brightness.png"];
+        cell.ideaShareButton.imageView.image = [UIImage imageNamed:@"brightness_light"];
     } else {
-        cell.ideaSharedIcon.image = nil;
+        cell.ideaShareButton.imageView.image = [UIImage imageNamed:@"brightness"];
     }
+    cell.idea = idea;
+    cell.parentTableView = self.tableView;
+    
     if(idea.content.length < kMaxIdeaTitleLength) {
         cell.ideaTitle.text = idea.content;
     } else {
@@ -89,12 +96,23 @@
     }
 }
 
-- (void)ideaRemoved:(Idea *)idea {
-    [_ideaTableView reloadData];
+- (void)ideaRemoved:(Idea *)idea index:(NSUInteger)index {
+    
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
 }
 
-- (void)ideaAdded:(Idea *)idea {
-    [_ideaTableView reloadData];
+- (void)ideaAdded:(Idea *)idea index:(NSUInteger)index {
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+                     withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
+}
+
+- (void)ideaChanged:(Idea *)idea index:(NSUInteger)index {
+    
 }
 
 - (IBAction)showSidebar:(id)sender {

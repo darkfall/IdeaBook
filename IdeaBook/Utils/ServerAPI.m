@@ -38,6 +38,9 @@
     respObj[@"status"] == nil || ![respObj[@"status"] isEqual: @"failed"]
 
 
+#define CALL(x) if(x) x()
+
+
 + (void)registerNewUser:(const IdeaUser*)user
                 success:(void (^)(void))success
                    fail:(void (^)(void))fail {
@@ -52,15 +55,15 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success();
+                  CALL(success);
               } else {
                   NSLog(@"[ServerAPI] registerNewUser error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] registerNewUser error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
 }
@@ -88,12 +91,13 @@
                          NSLog(@"getIdeasNearby: Got invalid idea: %@", idea);
                      }
                  }
-                 success(ideas);
+                 if(success)
+                     success(ideas);
              }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] getIdeasNearby error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
 }
@@ -119,12 +123,13 @@
                          NSLog(@"[ServerAPI] getIdeasNearby: Got invalid idea: %@", idea);
                      }
                  }
-                 success(ideas);
+                 if(success)
+                     success(ideas);
              }
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"[ServerAPI] getSharedIdeas error: %@", error);
-             fail();
+             CALL(fail);
          }
      ];
 }
@@ -151,12 +156,12 @@
                   success(idea.uuid);
               } else {
                   NSLog(@"[ServerAPI] shareIdea error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] shareIdea error: %@", error);
-              fail();
+              CALL(fail);
           }
     ];
     
@@ -170,19 +175,20 @@
     
     NSDictionary *parameters = @{@"uuid": uuid};
     
+    NSLog(@"[Server API] Removing idea from sharing: %@", uuid);
     [manager POST:kRemoveIdeaUrl
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success();
+                  CALL(success);
               } else {
                   NSLog(@"[ServerAPI] removeIdea error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] removeIdea error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
     
@@ -202,15 +208,15 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success();
+                  CALL(success);
               } else {
                   NSLog(@"[ServerAPI] modifyIdea error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] modifyIdea error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
 
@@ -234,13 +240,13 @@
                      success(idea);
                  else {
                      NSLog(@"[ServerAPI] getIdea error: %@", responseObject[@"error"]);
-                     fail();
+                     CALL(fail);
                  }
              }
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"[ServerAPI] getIdea error: %@", error);
-             fail();
+             CALL(fail);
          }
      ];
     
@@ -273,7 +279,7 @@
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"[ServerAPI] getComments error: %@", error);
-             fail();
+             CALL(fail);
          }
      ];
     
@@ -295,12 +301,12 @@
                   success([idea.likes intValue]);
               } else {
                   NSLog(@"[ServerAPI] likeIdea error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] likeIdea error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
 }
@@ -321,12 +327,12 @@
                   success([idea.dislikes intValue]);
               } else {
                   NSLog(@"[ServerAPI] dislikeIdea error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] dislikeIdea error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
 }
@@ -351,12 +357,12 @@
                   success(comment.uuid);
               } else {
                   NSLog(@"[ServerAPI] addComment error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] addComment error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
 }
@@ -373,15 +379,15 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  success();
+                  CALL(success);
               } else {
                   NSLog(@"[ServerAPI] removeComment error: %@", responseObject[@"error"]);
-                  fail();
+                  CALL(fail);
               }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] removeComment error: %@", error);
-              fail();
+              CALL(fail);
           }
      ];
 }

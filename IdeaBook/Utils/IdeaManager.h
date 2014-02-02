@@ -12,8 +12,9 @@
 
 @protocol IdeaManagerDelegate
 
-- (void)ideaAdded:(Idea*)idea;
-- (void)ideaRemoved:(Idea*)idea;
+- (void)ideaAdded:(Idea*)idea index:(NSUInteger)index;
+- (void)ideaRemoved:(Idea*)idea index:(NSUInteger)index;
+- (void)ideaChanged:(Idea*)idea index:(NSUInteger)index;
 
 @end
 
@@ -32,5 +33,8 @@
 - (void)ideaChanged:(Idea*)idea withNotification:(BOOL)withNotification;;
 
 - (void)saveDataToDisk;
+
+// share or cancel sharing an idea
+- (void)shareOrCancelShareIdea:(Idea*)idea onView:(UIView*)view  withNotification:(BOOL)notification onShared:(void (^)(void))onShared onCancelled:(void (^)(void))onCancelled;
 
 @end

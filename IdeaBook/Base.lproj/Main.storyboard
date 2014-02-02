@@ -89,7 +89,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyD-kE-Jsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="266"/>
+            <point key="canvasLocation" x="1316" y="266"/>
         </scene>
         <!--Idea View Controller - My Ideas-->
         <scene sceneID="uDk-tt-7ak">
@@ -103,7 +103,7 @@
                         <color key="sectionIndexTrackingBackgroundColor" red="1" green="0.98823535439999999" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ideaCell" rowHeight="52" id="5Yu-AK-VDk" customClass="IdeaTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="52"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Yu-AK-VDk" id="D7y-4k-icH">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
@@ -115,10 +115,6 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="brightness.png" translatesAutoresizingMaskIntoConstraints="NO" id="agx-a2-wDg">
-                                            <rect key="frame" x="273" y="10" width="32" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p84-Ir-IrH">
                                             <rect key="frame" x="15" y="30" width="216" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -126,11 +122,21 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDb-Vb-X68">
+                                            <rect key="frame" x="268" y="6" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="brightness">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="shareIdeaClicked:" destination="5Yu-AK-VDk" eventType="touchUpInside" id="yyI-r0-ik8"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ideaCreationTime" destination="p84-Ir-IrH" id="usk-NL-IhO"/>
-                                    <outlet property="ideaSharedIcon" destination="agx-a2-wDg" id="nZK-9B-JLn"/>
+                                    <outlet property="ideaShareButton" destination="sDb-Vb-X68" id="rJ1-tl-n1p"/>
                                     <outlet property="ideaTitle" destination="rIs-cK-RSM" id="mP6-S9-ZaP"/>
                                     <segue destination="O8y-WW-3bj" kind="push" identifier="showIdeaDetail" id="gVN-ax-RId"/>
                                 </connections>
@@ -168,7 +174,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fj9-6Y-XX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="927"/>
+            <point key="canvasLocation" x="1316" y="927"/>
         </scene>
         <!--Idea Detail View Controller - My Idea-->
         <scene sceneID="BQ3-ng-Hfa">
@@ -250,7 +256,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4.2mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NM4-kx-pXC">
-                                        <rect key="frame" x="212" y="4" width="92" height="21"/>
+                                        <rect key="frame" x="139" y="4" width="161" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -277,6 +283,7 @@
                         <outlet property="ideaContent" destination="rBc-XG-O13" id="mgZ-MD-pVK"/>
                         <outlet property="numDislikesLabel" destination="cHI-FQ-onP" id="B6r-zP-52x"/>
                         <outlet property="numLikesLabel" destination="ZIz-3s-h6V" id="sTQ-TI-91E"/>
+                        <outlet property="shareButton" destination="Ctf-Bg-NgF" id="Mms-87-3ra"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6e0-TQ-i0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -503,28 +510,35 @@
             </objects>
             <point key="canvasLocation" x="171" y="403"/>
         </scene>
-        <!--Idea Nearby View Controller - Nearby Ideas-->
+        <!--Idea Nearby View Controller - Discover-->
         <scene sceneID="FVF-kG-bO0">
             <objects>
                 <tableViewController id="Hah-yq-Zne" customClass="IdeaNearbyViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="vVX-Eh-5qq">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" id="vVX-Eh-5qq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ideaNearbyCell" rowHeight="66" id="R3M-DO-q5c" customClass="IdeaNearbyTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="66"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ideaNearbyCell" rowHeight="75" id="R3M-DO-q5c" customClass="IdeaNearbyTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R3M-DO-q5c" id="8ce-7f-MDZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="65"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="74"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0R-20-M1g">
-                                            <rect key="frame" x="26" y="22" width="42" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TITLE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0R-20-M1g">
+                                            <rect key="frame" x="20" y="14" width="267" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be9-8U-53I">
+                                            <rect key="frame" x="20" y="43" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="smile">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -535,7 +549,7 @@
                         </prototypes>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Nearby Ideas" id="o4R-7N-XSx">
+                    <navigationItem key="navigationItem" title="Discover" id="o4R-7N-XSx">
                         <barButtonItem key="leftBarButtonItem" id="fD1-vi-UBT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="vah-KH-K99">
                                 <rect key="frame" x="16" y="12" width="28" height="20"/>
@@ -618,7 +632,7 @@
     </scenes>
     <resources>
         <image name="bookmark.png" width="1024" height="1024"/>
-        <image name="brightness.png" width="24" height="24"/>
+        <image name="brightness" width="24" height="24"/>
         <image name="comments.png" width="1024" height="1024"/>
         <image name="menu.png" width="28" height="20"/>
         <image name="outbox.png" width="24" height="24"/>
@@ -635,6 +649,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vfA-qk-Rwk"/>
+        <segue reference="Yxa-tm-OBj"/>
     </inferredMetricsTieBreakers>
 </document>

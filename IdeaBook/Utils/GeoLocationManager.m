@@ -52,7 +52,7 @@
 - (CLLocationDistance)distanceFromCurrentLocation:(double)latitude longitude:(double)longitude {
     if(self.lastLocation != nil) {
         CLLocation* new_loc = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
-        return [[self lastLocation] distanceFromLocation:new_loc];
+        return [[self lastLocation] distanceFromLocation:new_loc] * 0.000621371192;
     } else {
         return -1.f;
     }

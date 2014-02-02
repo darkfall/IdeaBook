@@ -12,6 +12,7 @@
 @interface NewIdeaViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *ideaContentTextView;
+@property (strong, nonatomic) NSString* ideaContent;
 
 @end
 
@@ -21,15 +22,18 @@
     [super viewDidLoad];
     
     _ideaContentTextView.delegate = self;
-    
     [_ideaContentTextView becomeFirstResponder];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    _ideaContentTextView.text = _ideaContent;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView1 {
+- (void)textViewDidBeginEditing:(UITextView *)textView {
 
 }
 
@@ -37,9 +41,9 @@
 
 }
 
-
 - (void)setIdeaContent:(NSString*)content {
     _ideaContentTextView.text = content;
+    _ideaContent = content;
 }
 
 - (IBAction)doneClicked:(id)sender {

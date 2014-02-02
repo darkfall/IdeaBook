@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IdeaFountainViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+#import "SWRevealViewController.h"
+
+@interface IdeaFountainViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, SWRevealViewControllerDelegate>
 
 @end

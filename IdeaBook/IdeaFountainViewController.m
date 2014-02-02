@@ -26,7 +26,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray* currentWords;
-@property (strong, nonatomic) NSMutableArray* stashedIndexes;
+@property (strong, nonatomic) NSMutableArray* stashedWords;
 
 @property (weak, nonatomic) NSArray* availableWords;
 
@@ -52,10 +52,11 @@
     self.collectionView.delegate = self;
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    self.revealViewController.delegate = self;
     
     {
         UIButton* stashedIdeaButton = [[UIButton alloc] init];
-        [stashedIdeaButton setFrame:CGRectMake(210, 386, 100, 30)];
+        [stashedIdeaButton setFrame:CGRectMake(216, 386, 100, 30)];
         [stashedIdeaButton setTitleColor:[UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
         [stashedIdeaButton setTitle:@"Create Idea" forState:UIControlStateNormal];
         
@@ -66,6 +67,14 @@
         
         [self.view addSubview:stashedIdeaButton];
         [self.view bringSubviewToFront:stashedIdeaButton];
+        
+        UILabel* hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 386, 200, 30)];
+        hintLabel.text = @"Click on a idea to stash it";
+        hintLabel.font = [UIFont systemFontOfSize:12];
+        hintLabel.textColor = [UIColor lightGrayColor];
+        
+        [self.view addSubview:hintLabel];
+        [self.view bringSubviewToFront:hintLabel];
     }
     
     [self runIdeaFountain];
@@ -77,12 +86,11 @@
 
 - (void) runIdeaFountain {
     _currentWords = [[NSMutableArray alloc] init];
-    _stashedIndexes = [[NSMutableArray alloc] init];
+    _stashedWords = [[NSMutableArray alloc] init];
     _availableWords = [[WordManager sharedInstance] getWords];
     
     if(_availableWords != nil) {
         
-        [self ideaFountainTick:nil];
         [self resume];
         
     } else {
@@ -167,7 +175,7 @@
         IdeaFountainCollectionViewLayout* layout = (IdeaFountainCollectionViewLayout*)self.collectionView.collectionViewLayout;
         [layout removeGravityAtIndexPath:indexPath];
         
-        [_stashedIndexes addObject:[NSNumber numberWithInt:indexPath.row]];
+        [_stashedWords addObject:[_currentWords objectAtIndex:indexPath.row]];
     }
 }
 
@@ -176,6 +184,18 @@
    
     
 }
+
+#pragma SWRevealViewDelegate methods
+
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position {
+    
+}
+
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position {
+    
+}
+
+#pragma mark actions
 
 - (IBAction)reloadClicked:(id)sender {
     [self resetIdeaFountain];
@@ -201,6 +221,8 @@
     if([segue.identifier isEqualToString:@"shownewidea"]) {
         NewIdeaViewController* newIdeaView = (NewIdeaViewController*)segue.destinationViewController;
         
+        NSString* ideaContent = [_stashedWords componentsJoinedByString:@", "];
+        [newIdeaView setIdeaContent:ideaContent];
     }
 }
 

@@ -71,9 +71,6 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
-    
     UITableViewCell* currentCell = nil;
     // Set the photo if it navigates to the PhotoView
     if ([segue.identifier isEqualToString:@"nearby_ideas"]) {

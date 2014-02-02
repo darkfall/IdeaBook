@@ -16,7 +16,7 @@
 
 #import "ColorScheme.h"
 
-#define kMaxIdeaTitleLength 20
+#define kMaxIdeaTitleLength 30
 
 @interface IdeaViewController ()
 

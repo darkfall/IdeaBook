@@ -57,11 +57,11 @@
         
         NSLog(@"[TestServerAPI] shareIdea: got uuid = %@", idea.uuid);
         
-        [ServerAPI likeIdea:idea success:^(int numLikes) {
-            NSLog(@"[TestServerAPI] likeIdea: got likes = %d", numLikes);
+        [ServerAPI likeIdea:idea success:^(int numLikes, int numDislikes) {
+            NSLog(@"[TestServerAPI] likeIdea: got likes = %d dislikes = %d", numLikes, numDislikes);
             
-            [ServerAPI dislikeIdea:idea success:^(int numDislikes) {
-                NSLog(@"[TestServerAPI] dislikeIdea: got dislikes = %d", numDislikes);
+            [ServerAPI dislikeIdea:idea success:^(int numLikes, int numDislikes) {
+                NSLog(@"[TestServerAPI] dislikeIdea: got likes = %d dislikes = %d", numLikes, numDislikes);
                 
                 IdeaComment* comment = [[IdeaComment alloc] init];
                 comment.content = @"test";
@@ -108,13 +108,13 @@
                 
                 NSLog(@"[TestServerAPI] dislikeIdea: failed");
                 
-            }];
+            } any:nil];
             
         } fail:^{
             
             NSLog(@"[TestServerAPI] likeIdea: failed");
             
-        }];
+        } any:nil];
         
     } fail:^{
         

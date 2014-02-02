@@ -61,6 +61,14 @@
 - (void)ideaChanged:(Idea*)idea withNotification:(BOOL)withNotification; {
     [self saveDataToDisk];
     
+    if([idea.shared boolValue]) {
+        [ServerAPI modifyIdea:idea success:^{
+        
+        } fail:^{
+            
+        }];
+    }
+    
     if(withNotification) {
         if(_delegate)
             [_delegate ideaChanged:idea index:[_ideas indexOfObject:idea]];

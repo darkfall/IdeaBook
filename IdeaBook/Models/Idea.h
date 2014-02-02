@@ -24,5 +24,11 @@
 
 @property (strong, nonatomic) NSNumber* shared;
 
+@property (strong, nonatomic) NSString* username;
+@property (strong, nonatomic) NSString* useruuid;
+
+@property (strong, nonatomic) NSNumber* liked;
+@property (strong, nonatomic) NSNumber* disliked;
+
 
 @end

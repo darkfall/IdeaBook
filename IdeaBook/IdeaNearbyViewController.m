@@ -19,7 +19,7 @@
 
 #import "IdeaNearbyTableViewCell.h"
 
-#define kMaxIdeaTitleLength 20
+#define kMaxIdeaTitleLength 30
 
 @interface IdeaNearbyViewController ()
 
@@ -47,6 +47,10 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
+    
+    [self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
+    [self.refreshControl beginRefreshing];
+    [self refreshNearbyIdeas:nil];
 }
 
 - (void)refreshNearbyIdeas: (id) sender {
@@ -60,7 +64,7 @@
             [_ideasTableView reloadData];
             
             [AlertHelper showNZAlert:@"Info"
-                             message:[NSString stringWithFormat:@"Found %i nearby ideas", [_nearbyIdeas count]]
+                             message:[NSString stringWithFormat:@"Found %i ideas nearby you", [_nearbyIdeas count]]
                                style:NZAlertStyleSuccess];
         
         } fail:^{
@@ -73,8 +77,11 @@
 
         }];
     } else {
+        
+        [self.refreshControl endRefreshing];
+        
         [AlertHelper showNZAlert:@"Error"
-                         message:@"Failed getting current location"
+                         message:@"Failed getting current location. Please enable location services."
                            style:NZAlertStyleError];
     }
 }
@@ -87,11 +94,37 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     IdeaNearbyTableViewCell *cell = (IdeaNearbyTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"ideaNearbyCell" forIndexPath:indexPath];
     
-    Idea* idea =  [_nearbyIdeas objectAtIndex:indexPath.row];
+    Idea* idea = [_nearbyIdeas objectAtIndex:indexPath.row];
+    cell.idea = idea;
+    
     if(idea.content.length < kMaxIdeaTitleLength) {
         cell.ideaTitle.text = idea.content;
     } else {
         cell.ideaTitle.text = [[idea.content substringWithRange:NSMakeRange(0, kMaxIdeaTitleLength - 3)] stringByAppendingString:@"..."];
+    }
+    cell.userNameLabel.text = [@"By " stringByAppendingString:idea.username];
+    
+    cell.numLikesLabel.text = [NSString stringWithFormat:@"%i", [idea.likes intValue]];
+    cell.numDislikesLabel.text = [NSString stringWithFormat:@"%i", [idea.dislikes intValue]];
+    
+    float dist = [[GeoLocationManager sharedInstance] distanceFromCurrentLocation:[idea.latitude floatValue]
+                                                                        longitude:[idea.longitude floatValue]];
+    if(dist > 0) {
+        cell.distanceLabel.text = [NSString stringWithFormat:@"%.2fmi away", dist];
+    } else {
+        cell.distanceLabel.text = @"unknown mi away";
+    }
+    
+    if([idea.liked intValue] > 0) {
+        cell.likeButton.imageView.image = [UIImage imageNamed:@"smile_light"];
+    } else {
+        cell.likeButton.imageView.image = [UIImage imageNamed:@"smile"];
+    }
+    
+    if([idea.disliked intValue] > 0) {
+        cell.dislikeButton.imageView.image = [UIImage imageNamed:@"smile_light"];
+    } else {
+        cell.dislikeButton.imageView.image = [UIImage imageNamed:@"smile"];
     }
     
     return cell;

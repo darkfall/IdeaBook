@@ -50,13 +50,24 @@
              fail:(void (^)(void))fail;
 
 + (void)likeIdea:(Idea*)idea
-         success:(void (^)(int))success
-            fail:(void (^)(void))fail;
+         success:(void (^)(int, int))success
+            fail:(void (^)(void))fail
+             any:(void (^)(void))any;
 
 + (void)dislikeIdea:(Idea*)idea
-            success:(void (^)(int))success
-               fail:(void (^)(void))fail;
+            success:(void (^)(int, int))success
+               fail:(void (^)(void))fail
+                any:(void (^)(void))any;
 
++ (void)cancelLikeIdea:(Idea*)idea
+               success:(void (^)(int, int))success
+                  fail:(void (^)(void))fail
+                   any:(void (^)(void))any;
+
++ (void)cancelDislikeIdea:(Idea*)idea
+                  success:(void (^)(int, int))success
+                     fail:(void (^)(void))fail
+                      any:(void (^)(void))any;
 
 + (void)getComments:(const Idea*)idea
             success:(void (^)(NSArray*))success

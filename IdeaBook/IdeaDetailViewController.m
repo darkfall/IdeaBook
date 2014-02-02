@@ -14,7 +14,11 @@
 #import "Utils/IdeaManager.h"
 #import "Utils/GeoLocationManager.h"
 
-@interface IdeaDetailViewController ()
+#import "Utils/ServerAPI.h"
+
+@interface IdeaDetailViewController () {
+    bool _contentChanged;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *numDislikesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLikesLabel;
@@ -52,6 +56,7 @@
     }
     
     _ideaContent.delegate = self;
+    _contentChanged = false;
     
     [_ideaContent becomeFirstResponder];
 }
@@ -61,8 +66,14 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    _idea.content = _ideaContent.text;
-    [[IdeaManager sharedInstance] ideaChanged:_idea withNotification:YES];
+    _contentChanged = true;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if(_contentChanged) {
+        _idea.content = _ideaContent.text;
+        [[IdeaManager sharedInstance] ideaChanged:_idea withNotification:YES];
+    }
 }
 
 - (void)updateDistance {

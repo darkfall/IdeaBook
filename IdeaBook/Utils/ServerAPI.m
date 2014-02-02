@@ -13,6 +13,7 @@
 #import "../Models/IdeaComment.h"
 #import "../Models/Idea.h"
 #import "../Models/IdeaCategory.h"
+#import "../Utils/UserManager.h"
 
 #import "../AFNetworking/AFHTTPRequestOperationManager.h"
 
@@ -30,12 +31,22 @@
 #define kGetCommentsUrl         @ kServerBaseUrl "get_comments"
 #define kLikeIdeaUrl            @ kServerBaseUrl "like_idea"
 #define kDislikeIdeaUrl         @ kServerBaseUrl "dislike_idea"
+#define kCancelLikeIdeaUrl      @ kServerBaseUrl "cancel_like_idea"
+#define kCancelDislikeIdeaUrl   @ kServerBaseUrl "cancel_dislike_idea"
 #define kAddCommentUrl          @ kServerBaseUrl "add_comment"
 #define kRemoveCommentUrl       @ kServerBaseUrl "remove_comment"
 
 
 #define API_SUCCEED(respObj) \
     respObj[@"status"] == nil || ![respObj[@"status"] isEqual: @"failed"]
+
+
+#define PARSE_LIKE_DISLIKE_RESULT(respObj, idea, call) \
+    NSArray* resp = [respObj[@"data"] componentsSeparatedByString:@";"]; \
+    idea.likes = [NSNumber numberWithInt:[resp[0] intValue]]; \
+    idea.dislikes = [NSNumber numberWithInt:[resp[1] intValue]]; \
+    if(call) \
+        call([idea.likes intValue], [idea.dislikes intValue]); \
 
 
 #define CALL(x) if(x) x()
@@ -75,7 +86,8 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSDictionary *parameters = @{@"latitude": [NSNumber numberWithDouble:latitude],
-                                 @"longitude": [NSNumber numberWithDouble:longitude]};
+                                 @"longitude": [NSNumber numberWithDouble:longitude],
+                                 @"uuid": [UserManager getCurrentUser].uuid};
     
     [manager GET:kGetIdeasNearbyUrl
       parameters:parameters
@@ -93,6 +105,10 @@
                  }
                  if(success)
                      success(ideas);
+             } else {
+                 
+                 NSLog(@"[ServerAPI] getIdeasNearby error: %@", responseObject[@"error"]);
+                 CALL(fail);
              }
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -208,6 +224,7 @@
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
+                  NSLog(@"[ServerAPI] modifyIdea succeed");
                   CALL(success);
               } else {
                   NSLog(@"[ServerAPI] modifyIdea error: %@", responseObject[@"error"]);
@@ -286,55 +303,144 @@
 }
 
 + (void)likeIdea:(Idea*)idea
-         success:(void (^)(int))success
-            fail:(void (^)(void))fail {
+         success:(void (^)(int, int))success
+            fail:(void (^)(void))fail
+             any:(void (^)(void))any {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSDictionary *parameters = @{@"uuid": idea.uuid};
+    NSDictionary *parameters = @{@"idea_uuid": idea.uuid,
+                                 @"user_uuid": [UserManager getCurrentUser].uuid};
     
     [manager POST:kLikeIdeaUrl
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  idea.likes = [NSNumber numberWithInt:[responseObject[@"data"] intValue]];
-                  success([idea.likes intValue]);
+                  
+                  PARSE_LIKE_DISLIKE_RESULT(responseObject, idea, success);
+                  
+                  idea.liked = [NSNumber numberWithInt:1];
+                  idea.disliked = [NSNumber numberWithInt:0];
+                  
               } else {
                   NSLog(@"[ServerAPI] likeIdea error: %@", responseObject[@"error"]);
                   CALL(fail);
               }
+              CALL(any);
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] likeIdea error: %@", error);
               CALL(fail);
+            
+              CALL(any);
           }
      ];
 }
 
 + (void)dislikeIdea:(const Idea*)idea
-            success:(void (^)(int))success
-               fail:(void (^)(void))fail {
+            success:(void (^)(int, int))success
+               fail:(void (^)(void))fail
+                any:(void (^)(void))any {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSDictionary *parameters = @{@"uuid": idea.uuid};
+    NSDictionary *parameters = @{@"idea_uuid": idea.uuid,
+                                 @"user_uuid": [UserManager getCurrentUser].uuid};
     
     [manager POST:kDislikeIdeaUrl
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               if(API_SUCCEED(responseObject)) {
-                  idea.dislikes = [NSNumber numberWithInt:[responseObject[@"data"] intValue]];
-                  success([idea.dislikes intValue]);
+                  
+                  PARSE_LIKE_DISLIKE_RESULT(responseObject, idea, success);
+                  
+                  
+                  idea.liked = [NSNumber numberWithInt:0];
+                  idea.disliked = [NSNumber numberWithInt:1];
+                  
               } else {
                   NSLog(@"[ServerAPI] dislikeIdea error: %@", responseObject[@"error"]);
                   CALL(fail);
               }
+              
+              CALL(any);
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               NSLog(@"[ServerAPI] dislikeIdea error: %@", error);
               CALL(fail);
+              
+              CALL(any);
           }
      ];
+}
+
++ (void)cancelLikeIdea:(Idea*)idea
+               success:(void (^)(int, int))success
+                  fail:(void (^)(void))fail
+                   any:(void (^)(void))any {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSDictionary *parameters = @{@"idea_uuid": idea.uuid,
+                                 @"user_uuid": [UserManager getCurrentUser].uuid};
+    
+    [manager POST:kCancelLikeIdeaUrl
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(API_SUCCEED(responseObject)) {
+                  
+                  PARSE_LIKE_DISLIKE_RESULT(responseObject, idea, success);
+                  
+                  idea.liked = [NSNumber numberWithInt:0];
+                  
+              } else {
+                  NSLog(@"[ServerAPI] cancelLikeIdea error: %@", responseObject[@"error"]);
+                  CALL(fail);
+              }
+              CALL(any);
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"[ServerAPI] cancelLikeIdea error: %@", error);
+              CALL(fail);
+              
+              CALL(any);
+          }
+     ];
+
+}
+
++ (void)cancelDislikeIdea:(Idea*)idea
+                  success:(void (^)(int, int))success
+                     fail:(void (^)(void))fail
+                      any:(void (^)(void))any {
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSDictionary *parameters = @{@"idea_uuid": idea.uuid,
+                                 @"user_uuid": [UserManager getCurrentUser].uuid};
+    
+    [manager POST:kCancelDislikeIdeaUrl
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              if(API_SUCCEED(responseObject)) {
+                  
+                  PARSE_LIKE_DISLIKE_RESULT(responseObject, idea, success);
+                  
+                  idea.disliked = [NSNumber numberWithInt:0];
+                  
+              } else {
+                  NSLog(@"[ServerAPI] cancelDislikeIdea error: %@", responseObject[@"error"]);
+                  CALL(fail);
+              }
+              CALL(any);
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              NSLog(@"[ServerAPI] cancelDislikeIdea error: %@", error);
+              CALL(fail);
+              
+              CALL(any);
+          }
+     ];
+    
 }
 
 + (void)addComment:(const Idea*)idea

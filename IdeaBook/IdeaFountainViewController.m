@@ -24,6 +24,7 @@
 
 @interface IdeaFountainViewController () {
     NSTimer* _newWordTimer;
+    bool     _updating;
 }
 
 @property (strong, nonatomic) NSMutableArray* currentWords;
@@ -73,6 +74,7 @@
         [self.view addSubview:hintLabel];
         [self.view bringSubviewToFront:hintLabel];
     }
+    
     [self runIdeaFountain];
 }
 
@@ -81,6 +83,7 @@
 }
 
 - (void) runIdeaFountain {
+    _updating = false;
     _currentWords = [[NSMutableArray alloc] init];
     _stashedWords = [[NSMutableArray alloc] init];
     _availableWords = [[WordManager sharedInstance] getWords];
@@ -115,7 +118,11 @@
 }
 
 - (void)resetIdeaFountain {
+    if(_updating)
+        return;
+    
     [_newWordTimer invalidate];
+    _updating = true;
     
     [self.collectionView performBatchUpdates:^{
         IdeaFountainCollectionViewLayout* layout = (IdeaFountainCollectionViewLayout*)self.collectionView.collectionViewLayout;

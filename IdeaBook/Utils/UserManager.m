@@ -8,6 +8,7 @@
 
 #import "UserManager.h"
 #import "NSUserDefaults+DefaultValue.h"
+#import "GeoLocationManager.h"
 #import "../Models/IdeaUser.h"
 
 #define kUserUUIDKey @"ibUserUUID"
@@ -77,7 +78,7 @@ static IdeaUser* user = nil;
 }
 
 + (bool)getEnableLocationService {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kEnableLocationServiceKey defaultValue:true];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kEnableLocationServiceKey defaultValue:[GeoLocationManager geoLocationEnabled]];
 }
 
 + (void)setIdeaDropInterval:(float)interval  {

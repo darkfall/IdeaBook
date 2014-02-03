@@ -155,7 +155,7 @@
                 if(onShared)
                     onShared();
                 
-                if(notification)
+                if([UserManager isFirstTimeShare])
                     [AlertHelper showNZAlert:@"Info" message:@"Idea shared" style:NZAlertStyleSuccess];
                 
             } fail:^{
@@ -180,6 +180,7 @@
                 
                 [DejalActivityView removeView];
                 idea.shared = [NSNumber numberWithBool:NO];
+                [self ideaChanged:idea withNotification:YES];
                 [AlertHelper showNZAlert:@"Error" message:@"Cancel idea share failed" style:NZAlertStyleError];
                 
             }];

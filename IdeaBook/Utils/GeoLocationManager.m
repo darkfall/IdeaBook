@@ -46,6 +46,7 @@
 - (void)stopUpdate {
     [self->_locationManager stopUpdatingLocation];
     
+    _lastLocation = nil;
     _running = false;
 }
 

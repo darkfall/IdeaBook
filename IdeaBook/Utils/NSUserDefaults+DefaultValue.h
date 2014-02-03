@@ -14,5 +14,6 @@
 
 - (NSString*)stringForKey:(NSString*)defaultName defaultValue:(NSString*)defaultValue;
 - (bool)boolForKey:(NSString*)defaultName defaultValue:(bool)defaultValue;
+- (float)floatForKey:(NSString*)defaultName defaultValue:(float)defaultValue;
 
 @end

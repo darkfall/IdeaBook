@@ -16,6 +16,8 @@
 #define kUserLongitudeKey @"ibUserLongitude"
 #define kUserLatitudeKey @"ibUserLatitude"
 #define kEnableLocationServiceKey @"ibEnableLocationService"
+#define kIdeaDropIntervalKey @"idIdeaDropInterval"
+#define kIsFirstTimeShareKey @"idIsFirstTimeShare"
 
 @implementation UserManager
 
@@ -76,6 +78,25 @@ static IdeaUser* user = nil;
 
 + (bool)getEnableLocationService {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kEnableLocationServiceKey defaultValue:true];
+}
+
++ (void)setIdeaDropInterval:(float)interval  {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:[NSNumber numberWithFloat:interval] forKey:kIdeaDropIntervalKey];
+}
+
++ (float)getIdeaDropInterval {
+    return [[NSUserDefaults standardUserDefaults] floatForKey:kIdeaDropIntervalKey defaultValue:1.0f];
+}
+
+
++ (bool)isFirstTimeShare {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults objectForKey:kIsFirstTimeShareKey] != nil) {
+        return false;
+    }
+    [defaults setBool:true forKey:kIsFirstTimeShareKey];
+    return true;
 }
 
 

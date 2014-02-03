@@ -19,4 +19,9 @@
 + (void)setEnableLocationService:(bool)flag;
 + (bool)getEnableLocationService;
 
++ (void)setIdeaDropInterval:(float)interval;
++ (float)getIdeaDropInterval;
+
++ (bool)isFirstTimeShare;
+
 @end

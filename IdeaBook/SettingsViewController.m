@@ -10,6 +10,8 @@
 #import "SWRevealViewController/SWRevealViewController.h"
 
 #import "Utils/UserManager.h"
+#import "Utils/ServerAPI.h"
+#import "Utils/UserManager.h"
 #import "Utils/GeoLocationManager.h"
 
 #import "Models/IdeaUser.h"
@@ -18,6 +20,8 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *locationServiceSwitch;
+@property (weak, nonatomic) IBOutlet UISlider *ideaDropIntervalSlider;
+@property (weak, nonatomic) IBOutlet UILabel *ideaDropIntervalLabel;
 
 
 @end
@@ -31,6 +35,9 @@
     
     [_userNameLabel setReturnKeyType:UIReturnKeyDone];
     _userNameLabel.delegate = self;
+    
+    _ideaDropIntervalSlider.value = [UserManager getIdeaDropInterval];
+    _ideaDropIntervalLabel.text = [NSString stringWithFormat:@"%.1f", _ideaDropIntervalSlider.value];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,8 +59,20 @@
     [UserManager getCurrentUser].name = _userNameLabel.text;
     [UserManager saveCurrentUser];
     
+    [ServerAPI registerNewUser:[UserManager getCurrentUser] success:^{
+        NSLog(@"[ServerAPI] User modification succeed");
+    } fail:^{
+        // failed ? maybe not internet connection ?
+        NSLog(@"[ServerAPI] User modification failed");
+    }];
+    
     [textField resignFirstResponder];
     return YES;
+}
+
+- (IBAction)ideaDropInterval:(id)sender {
+    [UserManager setIdeaDropInterval:_ideaDropIntervalSlider.value];
+    _ideaDropIntervalLabel.text = [NSString stringWithFormat:@"%.1f", _ideaDropIntervalSlider.value];
 }
 
 - (IBAction)enableLocationServiceChanged:(id)sender {

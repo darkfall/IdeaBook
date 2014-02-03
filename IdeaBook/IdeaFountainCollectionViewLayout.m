@@ -71,7 +71,7 @@
             UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes
                                                             layoutAttributesForCellWithIndexPath:updateItem.indexPathAfterUpdate];
             
-            int32_t w = arc4random() % ((int)self.collectionView.bounds.size.width - kCellItemWidth);
+            int32_t w = arc4random() % ((int)self.collectionView.bounds.size.width - kCellItemWidth / 2);
             attributes.frame = CGRectMake(w,
                                           self.collectionView.bounds.origin.y - kCellItemHeight,
                                           kCellItemWidth,

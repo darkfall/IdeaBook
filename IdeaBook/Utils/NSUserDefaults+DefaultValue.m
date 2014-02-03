@@ -22,4 +22,11 @@
     return defaultValue;
 }
 
+- (float)floatForKey:(NSString*)defaultName defaultValue:(float)defaultValue {
+    if([self objectForKey:defaultName] != nil) {
+        return [self floatForKey:defaultName];
+    }
+    return defaultValue;
+}
+
 @end

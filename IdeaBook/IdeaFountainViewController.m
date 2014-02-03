@@ -14,6 +14,7 @@
 
 #import "Utils/WordManager.h"
 #import "Utils/AlertHelper.h"
+#import "Utils/UserManager.h"
 
 #import "Segues/ModalViewSegue.h"
 
@@ -98,7 +99,7 @@
 }
 
 - (void)resume {
-    _newWordTimer = [NSTimer scheduledTimerWithTimeInterval:1
+    _newWordTimer = [NSTimer scheduledTimerWithTimeInterval:[UserManager getIdeaDropInterval]
                                                      target:self
                                                    selector:@selector(ideaFountainTick:)
                                                    userInfo:nil

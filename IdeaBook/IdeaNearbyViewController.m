@@ -64,41 +64,48 @@
 }
 
 - (void)refreshNearbyIdeas: (id) sender {
+    // this is a demo app, so we are not enabling actual "nearby" ideas here, just grab all ideas
+    
     CLLocation* lastLoc = [[GeoLocationManager sharedInstance] lastLocation];
+    float latitude = 0, longitude = 0;
     if(lastLoc) {
-        [ServerAPI getIdeasNearby:lastLoc.coordinate.longitude longitude:lastLoc.coordinate.longitude success:^(NSArray* ideas) {
-            
-            [self.refreshControl endRefreshing];
+        latitude = lastLoc.coordinate.latitude;
+        longitude = lastLoc.coordinate.longitude;
+    }
+    
+    [ServerAPI getIdeasNearby:latitude longitude:longitude success:^(NSArray* ideas) {
         
-           // bool showAlert = _nearbyIdeas == nil || _nearbyIdeas.count == 0;
-            bool showAlert = false;
-            _nearbyIdeas = [NSMutableArray arrayWithArray:ideas];
-            [_ideasTableView reloadData];
-            
-            [_updateSound play];
-            
-            if(showAlert)
-                [AlertHelper showNZAlert:@"Info"
-                                 message:[NSString stringWithFormat:@"Found %lu ideas nearby you",   (unsigned long)[_nearbyIdeas count]]
-                                   style:NZAlertStyleSuccess];
+        [self.refreshControl endRefreshing];
+    
+        bool showAlert = _nearbyIdeas == nil || _nearbyIdeas.count != ideas.count;
+       // bool showAlert = false;
+        _nearbyIdeas = [NSMutableArray arrayWithArray:ideas];
+        [_ideasTableView reloadData];
         
-        } fail:^{
-            
-            [self.refreshControl endRefreshing];
-            
-            [AlertHelper showNZAlert:@"Error"
-                             message:@"Failed getting nearby ideas"
-                               style:NZAlertStyleError];
+        [_updateSound play];
+        
+        if(showAlert)
+            [AlertHelper showNZAlert:@"Info"
+                             message:[NSString stringWithFormat:@"Found %lu ideas nearby you",   (unsigned long)[_nearbyIdeas count]]
+                               style:NZAlertStyleSuccess];
+    
+    } fail:^{
+        
+        [self.refreshControl endRefreshing];
+        
+        [AlertHelper showNZAlert:@"Error"
+                         message:@"Failed getting nearby ideas"
+                           style:NZAlertStyleError];
 
-        }];
-    } else {
+    }];
+    /*} else {
         
         [self.refreshControl endRefreshing];
         
         [AlertHelper showNZAlert:@"Error"
                          message:@"Failed getting current location. Please enable location services."
                            style:NZAlertStyleError];
-    }
+    }*/
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,7 +124,7 @@
     } else {
         cell.ideaTitle.text = [[idea.content substringWithRange:NSMakeRange(0, kMaxIdeaTitleLength - 3)] stringByAppendingString:@"..."];
     }
-    cell.userNameLabel.text = [@"By " stringByAppendingString:idea.username];
+    cell.userNameLabel.text = [@"Shared by " stringByAppendingString:idea.username];
     
     cell.numLikesLabel.text = [NSString stringWithFormat:@"%i", [idea.likes intValue]];
     cell.numDislikesLabel.text = [NSString stringWithFormat:@"%i", [idea.dislikes intValue]];

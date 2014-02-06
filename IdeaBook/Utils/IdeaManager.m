@@ -179,8 +179,7 @@
             } fail:^{
                 
                 [DejalActivityView removeView];
-                idea.shared = [NSNumber numberWithBool:NO];
-                [self ideaChanged:idea withNotification:YES];
+                
                 [AlertHelper showNZAlert:@"Error" message:@"Cancel idea share failed" style:NZAlertStyleError];
                 
             }];
